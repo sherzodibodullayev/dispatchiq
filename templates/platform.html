@@ -1,0 +1,380 @@
+{% extends "base.html" %}
+
+{% block title %}Platform — {{ company.name }}{% endblock %}
+{% block description %}The planned DispatchIQ platform: dispatcher dashboard, natural-language copilot, load-matching engine, document intelligence, communication assistant, dispatch monitoring, and the integration layer underneath them.{% endblock %}
+
+{% block content %}
+
+<section class="phero">
+  <div class="shell">
+    <span class="mono">The platform</span>
+    <h1 class="rt">Six pieces, one dispatch desk, and a line the AI does not cross</h1>
+    <p>
+      Everything on this page is the planned product described in the five-year business plan.
+      None of it is shipped yet. Where the plan marks something as roadmap rather than initial
+      product, this page says so on the section itself rather than in a footnote.
+    </p>
+  </div>
+</section>
+
+<section class="sec sec--tight" id="dashboard">
+  <div class="shell">
+    <div class="grid2">
+      <div class="prose">
+        <span class="mono" style="color:var(--green)">Section 7.1</span>
+        <h2 style="margin-top:10px">Dispatcher dashboard</h2>
+        <p>
+          One consolidated view instead of a load board, a spreadsheet, a phone and an inbox. The
+          dashboard is planned to show trucks, drivers, current assignments, available loads,
+          pickup appointments, delivery appointments, operational alerts and documentation status
+          on a single screen.
+        </p>
+        <p>
+          The point is not that any one of those is hard to find today. It is that finding all
+          eight takes a dispatcher four applications and a memory of where things were left.
+        </p>
+      </div>
+      <div class="tile">
+        <span class="mono">On the screen</span>
+        <ul>
+          <li>Trucks and their current status</li>
+          <li>Drivers and availability</li>
+          <li>Current assignments</li>
+          <li>Available loads, ranked</li>
+          <li>Pickup and delivery appointments</li>
+          <li>Operational alerts and exceptions</li>
+          <li>Documentation status per load</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--band" id="copilot">
+  <div class="shell">
+    <h2 class="sec__title rt">AI dispatch copilot</h2>
+    <p class="sec__lede">
+      Plain-language questions against live operational data, so the answer does not require
+      navigating to wherever it happens to live.
+    </p>
+
+    <div class="grid2" style="margin-top:34px">
+      <div class="tile spot">
+        <span class="mono">Section 7.2 &middot; Examples from the plan</span>
+        <ul>
+          <li>&ldquo;Which trucks are available tomorrow?&rdquo;</li>
+          <li>&ldquo;Show me loads that could fit Truck&nbsp;14.&rdquo;</li>
+          <li>&ldquo;Which deliveries are at risk of being late?&rdquo;</li>
+          <li>&ldquo;Summarize today's open dispatches.&rdquo;</li>
+          <li>&ldquo;Prepare a message to the broker about the delay.&rdquo;</li>
+        </ul>
+      </div>
+      <div class="tile spot">
+        <span class="mono">What it is not</span>
+        <p>
+          It is not a general-purpose chatbot pointed at a fleet, and it is not a booking agent.
+          The last example on that list ends at <em>prepare</em>. A dispatcher reads the draft and
+          decides whether it goes.
+        </p>
+        <p style="margin-top:12px">
+          The same assistant answers questions on this website &mdash; the one in the corner. It is
+          working from the business plan rather than from a live fleet, and it will tell you so.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="matching">
+  <div class="shell">
+    <div class="grid2">
+      <div class="prose">
+        <span class="mono" style="color:var(--green)">Section 8</span>
+        <h2 style="margin-top:10px">Load-matching engine</h2>
+        <p>
+          The engine evaluates truck location, destination, pickup time, delivery time, equipment
+          type, cargo requirements, driver availability, estimated travel time and your own
+          operational preferences, and produces a ranked list of loads that could work.
+        </p>
+        <p>
+          <b>The ranking is a recommendation, not a decision.</b> The dispatcher approves, modifies
+          or rejects it. That is stated in the plan as a design requirement rather than a
+          limitation of an early version &mdash; a machine that books freight on your authority is
+          a different product with a different risk profile.
+        </p>
+      </div>
+      <div class="tile">
+        <span class="mono">Factors weighed</span>
+        <ul>
+          <li>Truck location and destination</li>
+          <li>Pickup and delivery times</li>
+          <li>Equipment type and cargo requirements</li>
+          <li>Driver availability</li>
+          <li>Estimated travel time</li>
+          <li>Operational preferences and lane history</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--band" id="documents">
+  <div class="shell">
+    <h2 class="sec__title rt">Document intelligence</h2>
+    <p class="sec__lede">
+      The paperwork a dispatcher currently reads on one screen and types into another.
+    </p>
+
+    <div class="grid2" style="margin-top:34px">
+      <div class="tile spot">
+        <span class="mono">Documents read</span>
+        <ul>
+          <li>Rate confirmations</li>
+          <li>Bills of lading</li>
+          <li>Proof of delivery</li>
+          <li>Lumper receipts</li>
+          <li>Detention documentation</li>
+          <li>Invoices</li>
+          <li>Appointment confirmations</li>
+        </ul>
+      </div>
+      <div class="tile spot">
+        <span class="mono">Fields extracted</span>
+        <ul>
+          <li>Pickup location</li>
+          <li>Delivery location</li>
+          <li>Appointment time</li>
+          <li>Commodity and weight</li>
+          <li>Equipment requirements</li>
+          <li>Reference numbers</li>
+          <li>Broker information</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note">
+      Extracted information populates the dispatch workflow directly. Extraction accuracy is one of
+      the things the Months 4&ndash;6 pilot program exists to measure &mdash; no accuracy figure is
+      claimed here, because none has been measured yet.
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="comms">
+  <div class="shell">
+    <h2 class="sec__title rt">Communication assistant</h2>
+    <p class="sec__lede">
+      Communication is a major component of dispatch work, and most of it is the same five messages.
+    </p>
+
+    <div class="grid3" style="margin-top:34px">
+      <div class="tile spot">
+        <span class="mono">Brokers</span>
+        <ul>
+          <li>Load inquiries</li>
+          <li>Rate requests</li>
+          <li>Appointment confirmations</li>
+          <li>Delay notifications</li>
+          <li>Status updates</li>
+        </ul>
+      </div>
+      <div class="tile spot">
+        <span class="mono">Drivers</span>
+        <ul>
+          <li>Dispatch instructions</li>
+          <li>Pickup information</li>
+          <li>Reminders</li>
+          <li>Appointment updates</li>
+        </ul>
+      </div>
+      <div class="tile spot">
+        <span class="mono">Customers</span>
+        <ul>
+          <li>Shipment status</li>
+          <li>Estimated arrival</li>
+          <li>Exception notifications</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note">
+      <b>Sending is earned, not assumed.</b> Automated sending is introduced gradually: human
+      approval first, then predefined low-risk automated workflows once a customer has seen enough
+      drafts to trust the pattern.
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--band" id="monitoring">
+  <div class="shell">
+    <div class="grid2">
+      <div class="prose">
+        <span class="mono" style="color:var(--green)">Section 4</span>
+        <h2 style="margin-top:10px">Dispatch monitoring</h2>
+        <p>
+          Alerting on the things that are cheap to fix an hour early and expensive to discover an
+          hour late.
+        </p>
+      </div>
+      <div class="tile">
+        <span class="mono">Alerts</span>
+        <ul>
+          <li>Approaching appointments</li>
+          <li>Delayed pickups</li>
+          <li>Delivery deadlines</li>
+          <li>Missing documentation</li>
+          <li>Changes to planned routes</li>
+          <li>Operational exceptions</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="voice">
+  <div class="shell">
+    <div class="note" style="border-left-color:var(--accent); background:var(--accent-pale)">
+      <b>Voice AI &mdash; roadmap, not product (Section 10).</b> A future version is planned to let
+      a dispatcher work hands-free: <em>&ldquo;Find available refrigerated loads for the Dallas
+      truck,&rdquo;</em> answered out loud or on the dashboard. It is not built. Because voice
+      creates additional operational and legal exposure, the plan introduces it progressively with
+      consent, recording, privacy and audit controls where applicable. Anyone telling you it ships
+      in the first release is guessing.
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--band" id="integrations">
+  <div class="shell">
+    <h2 class="sec__title rt">The layers underneath</h2>
+    <p class="sec__lede">Section 15 &mdash; technology architecture.</p>
+
+    <div class="grid2" style="margin-top:34px">
+      <div class="tile">
+        <span class="mono">AI orchestration layer</span>
+        <p>Coordinates models, business rules, tools and workflows. Commercial models do the
+          inference; the orchestration, workflows, prompts, evaluation and domain data structures
+          are the company's own — and the architecture deliberately avoids depending on a single
+          model provider.</p>
+      </div>
+      <div class="tile">
+        <span class="mono">Transportation data layer</span>
+        <p>Authorized information on trucks, drivers, loads, routes, appointments and documents.</p>
+      </div>
+      <div class="tile">
+        <span class="mono">Integration layer</span>
+        <ul>
+          <li>ELD systems</li>
+          <li>TMS platforms</li>
+          <li>Load boards</li>
+          <li>Mapping services</li>
+          <li>Email and SMS</li>
+          <li>Accounting systems</li>
+        </ul>
+      </div>
+      <div class="tile">
+        <span class="mono">Security (Section 16)</span>
+        <ul>
+          <li>Account authentication</li>
+          <li>Role-based access</li>
+          <li>Encryption</li>
+          <li>Audit logging</li>
+          <li>Secure API integrations</li>
+          <li>Controlled data access</li>
+          <li>Backup procedures and retention policies</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="governance">
+  <div class="shell">
+    <h2 class="sec__title rt">Where the human keeps authority</h2>
+    <p class="sec__lede">Section 5 &mdash; human-in-the-loop design.</p>
+
+    <div class="grid2" style="margin-top:30px">
+      <div class="tile spot">
+        <span class="mono">The AI may</span>
+        <ul>
+          <li>Recommend actions</li>
+          <li>Prepare communications</li>
+          <li>Organize information</li>
+          <li>Execute predefined workflows</li>
+        </ul>
+      </div>
+      <div class="tile spot">
+        <span class="mono">People decide</span>
+        <ul>
+          <li>Load acceptance</li>
+          <li>Pricing negotiations</li>
+          <li>Driver instructions</li>
+          <li>Unusual safety situations</li>
+          <li>Contractual disputes</li>
+          <li>Exceptions</li>
+          <li>Regulatory interpretation</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note">
+      <b>Why the line is drawn there.</b> An incorrect AI recommendation is an operational problem
+      (Section 28.1). The mitigations are human approval, business rules, confidence thresholds,
+      monitoring, audit trails and continuous evaluation — which only work if a person is still in
+      the path.
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--wash" id="compliance">
+  <div class="shell">
+    <div class="prose" style="max-width:820px">
+      <span class="mono" style="color:var(--green)">Sections 6 &amp; 28.2</span>
+      <h2 style="margin-top:10px">Regulatory posture</h2>
+      <p>
+        FMCSA's Electronic Logging Device rules apply to most motor carriers and drivers required
+        to maintain records of duty status. ELDs must meet specified technical requirements and be
+        certified and registered as required by FMCSA, and carriers are responsible for using
+        compliant devices.
+      </p>
+      <p>
+        <b>DispatchIQ therefore does not represent itself as replacing an FMCSA-compliant ELD.</b>
+        The planned architecture integrates with existing compliant ELD and fleet-management
+        systems, consumes authorized operational data from them, and uses it to assist dispatchers.
+      </p>
+      <p>
+        This posture comes out of the founder's own compliance research: her 2026 reference work on
+        U.S. and EU dispatch compliance addresses ELD recordkeeping obligations, hours-of-service
+        enforcement and broker liability exposure — the same issues that define where an AI dispatch
+        product must defer to certified systems rather than substitute for them.
+      </p>
+      <p>
+        Nothing on this site is legal or regulatory advice. Verify your own obligations against
+        current FMCSA guidance and a qualified professional.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="help">
+  <div class="shell help__inner">
+    <div class="help__copy">
+      <h2>Want to shape what gets built first?</h2>
+      <p>
+        Pilot carriers in Months 4&ndash;6 set the order of the integration backlog. That is the
+        practical value of being early here.
+      </p>
+      <div class="help__cta">
+        <a class="btn btn--ghost" href="/demo#pilot">Join the pilot</a>
+        <a class="btn btn--ghost" href="/pricing">See pricing</a>
+      </div>
+    </div>
+    <div class="help__media">
+      <div class="help__stage">
+        <img src="/static/images/support.jpg" alt="A dispatch operations desk with route monitors" width="1000" height="700" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

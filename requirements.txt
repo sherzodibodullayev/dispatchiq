@@ -1,0 +1,29 @@
+# DispatchIQ — RUNTIME dependencies only.
+#
+# This file is what the host installs, and on Vercel it is also what counts
+# against the 225 MB function limit. The first deploy failed at 276 MB, so
+# anything the serverless function does not actually import at runtime lives
+# in requirements-dev.txt instead.
+#
+# Notably absent:
+#   uvicorn  - Vercel invokes the ASGI app directly; uvicorn is only used by
+#              `python main.py` locally and by Render's start command. The
+#              [standard] extra was the expensive part (uvloop, watchfiles,
+#              httptools, websockets, PyYAML - all compiled, all unused here).
+#   pytest   - a test runner has no business in a production bundle.
+#
+# Floors, not exact pins: the app uses the Starlette
+# TemplateResponse(request, name, context) signature, which older pins predate.
+
+fastapi>=0.110
+starlette>=0.36
+pydantic>=2.6
+
+jinja2>=3.1
+itsdangerous>=2.1              # required by SessionMiddleware
+python-multipart>=0.0.9        # audio upload form parsing
+
+openai>=1.30
+python-dotenv>=1.0
+
+redis>=5.0                     # optional at runtime; app falls back to memory

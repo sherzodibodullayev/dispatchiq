@@ -1,0 +1,32 @@
+# What must never reach the deployment.
+#
+# vercel.json uses includeFiles: "**" so the function can read templates/ at
+# runtime. That is a blunt instrument — without this file it would also upload
+# the 95MB virtualenv, the 6MB chatbot archive and the business plan PDF, none
+# of which belong on a public host.
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# The local virtualenv. Vercel installs from requirements.txt.
+.venv/
+venv/
+
+# Source material that is not part of the site
+*.pdf
+*.zip
+pdf_text.txt
+chatbot_extracted/
+
+# Build and run artefacts
+__pycache__/
+*.pyc
+app.log
+audio_uploads/
+
+# Tooling that the host has no use for
+.claude/
+render.yaml
+.git/

@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+
+{% block title %}Privacy Policy — {{ company.name }}{% endblock %}
+{% block description %}How DispatchIQ handles information collected through this website and the AI copilot on it.{% endblock %}
+
+{% block content %}
+
+<section class="phero">
+  <div class="shell">
+    <span class="mono">Legal</span>
+    <h1>Privacy Policy</h1>
+    <p>How information collected through this website and the AI copilot on it is handled.</p>
+  </div>
+</section>
+
+<section class="sec sec--tight">
+  <div class="shell prose">
+
+    <div class="note" style="margin:0 0 30px">
+      <b>Scope.</b> This policy covers <em>this website</em> only. DispatchIQ is at the planning
+      stage and there is no product in operation, so there is no customer fleet data, driver data,
+      ELD data or document processing happening anywhere behind this site. When a product exists,
+      it will have its own data-processing terms in a signed agreement, and those will govern
+      operational data rather than this page.
+    </div>
+
+    <h2>Who is responsible</h2>
+    <p>
+      DispatchIQ is a working product name for a venture founded by {{ founder.name }}. No U.S.
+      legal entity has been formed. Until one exists, the founder is the point of contact for any
+      question about information submitted here:
+      <a href="mailto:{{ company.email }}">{{ company.email }}</a>.
+    </p>
+
+    <h2>What is collected</h2>
+    <h3>Messages you send the copilot</h3>
+    <p>
+      The assistant on this site sends your messages to a commercial AI model provider in order to
+      produce a reply. Conversations are stored against a randomly generated conversation
+      identifier so the assistant can follow the thread, and are retained for up to seven days
+      before expiring. There is no account, and nothing ties a conversation to you unless you type
+      something identifying into it.
+    </p>
+    <p>
+      <b>Do not paste driver records, customer contracts, load data, or anything else you would
+      not put in an email to a stranger.</b> The assistant is instructed not to repeat third-party
+      personal data back, but the sensible protection is not sending it.
+    </p>
+
+    <h3>Voice messages</h3>
+    <p>
+      If you use the microphone, the recording is uploaded, transcribed, and the audio file is
+      deleted immediately afterwards. The transcript is then treated exactly like a typed message.
+    </p>
+
+    <h3>Anything you volunteer</h3>
+    <p>
+      If you give the assistant a name, an email address or details about your operation so the
+      founder can follow up, that is kept for the purpose you gave it for and nothing else. The
+      same applies to the newsletter form in the footer.
+    </p>
+
+    <h3>Technical information</h3>
+    <p>
+      The server records ordinary request logs and applies rate limiting by IP address to stop
+      abuse of the assistant. There is no third-party advertising, no tracking pixel and no
+      cross-site profiling on this site.
+    </p>
+
+    <h2>Who it is shared with</h2>
+    <p>
+      The AI model provider that generates the assistant's replies, and the hosting and caching
+      infrastructure that runs the site. Nothing is sold, and nothing is shared with advertisers or
+      data brokers.
+    </p>
+
+    <h2>Retention</h2>
+    <p>
+      Conversations expire after seven days. Audio is deleted as soon as it has been transcribed.
+      Anything you sent deliberately so the founder could reply — a name and an email — is kept
+      until it is no longer needed for that, or until you ask for it to be deleted.
+    </p>
+
+    <h2>Your choices</h2>
+    <p>
+      The <b>Clear</b> button under the composer drops the conversation and starts a new one. To
+      ask what is held about you, or to have it deleted, email
+      <a href="mailto:{{ company.email }}">{{ company.email }}</a>. Depending on where you live you
+      may have statutory rights of access, correction, deletion and portability; requests are
+      honoured regardless of whether a statute compels it.
+    </p>
+
+    <h2>Children</h2>
+    <p>This site is aimed at trucking businesses and is not intended for anyone under 18.</p>
+
+    <h2>Changes</h2>
+    <p>
+      If this policy changes materially — particularly once a product exists and processes
+      operational data — the change will be posted here before it takes effect.
+    </p>
+
+    <p style="margin-top:28px; color:var(--faint); font-size:13px">
+      This page describes practice, not legal advice, and it is not a substitute for the data
+      agreement that will accompany the product.
+    </p>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block title %}Talk to the copilot — {{ company.name }}{% endblock %}
+{% block description %}Ask the DispatchIQ Copilot about your own operation. It answers from the business plan, says plainly what is not built yet, and hands you to the founder when you want a person.{% endblock %}
+
+{% block content %}
+<section class="console">
+  <div class="console__sky" aria-hidden="true"></div>
+
+  <div class="shell console__grid">
+
+    <aside class="console__aside">
+      <div>
+        <span class="eyebrow">Contact</span>
+        <h1 class="rt">Ask it about your own operation</h1>
+        <p>
+          This assistant answers from DispatchIQ's business plan. It is not connected to a live
+          fleet, because there is not one yet &mdash; so ask it about the product, the pricing, the
+          compliance boundary or the pilot, and it will tell you where the plan stops.
+        </p>
+        <p class="console__try">
+          Try:
+          <span class="tw" data-phrases="&ldquo;I run 6 trucks and dispatch them myself. What changes?&rdquo;|&ldquo;Does this replace my ELD?&rdquo;|&ldquo;Will it book loads without me?&rdquo;|&ldquo;What does it actually cost?&rdquo;|&ldquo;Just get me a person.&rdquo;">&ldquo;I run 6 trucks and dispatch them myself. What changes?&rdquo;</span>
+        </p>
+      </div>
+
+      <ul class="console__list">
+        <li><b>Discloses</b><span>It says it is an AI, not a person, before you have to ask</span></li>
+        <li><b>Answers</b><span>From the business plan only &mdash; and it says when the plan is silent</span></li>
+        <li><b>Distinguishes</b><span>Between what is designed and what is merely on the roadmap</span></li>
+        <li><b>Refuses</b><span>Regulatory advice, invented figures, and promises about dates</span></li>
+        <li><b>Hands off</b><span>Takes your email and stops selling the moment you ask for a person</span></li>
+      </ul>
+
+      <div class="console__limit spot" id="pilot">
+        <b>About the pilot</b>
+        Months 4&ndash;6 of the plan are a pilot program with owner-operators and small fleets. The
+        objective is evidence that the system reduces measurable administrative workload &mdash;
+        not revenue. Terms are not set. If you want to be in that group, tell the copilot your
+        fleet size, who dispatches today, and what your ELD and TMS are, and it will pass it to
+        {{ founder.name }} &mdash; or email
+        <a href="mailto:{{ company.email }}" style="color:var(--green-ink)">{{ company.email }}</a>
+        directly.
+      </div>
+
+      <div class="console__limit">
+        <b>What it will not do</b>
+        It will not invent a customer, a case study, an accuracy figure, a certification or a
+        delivery date. It will not quote a price outside the published planning range, and it will
+        not tell you whether your operation is FMCSA-compliant &mdash; that is a question for
+        current FMCSA guidance and a qualified professional.
+      </div>
+    </aside>
+
+    <div class="console__shell">
+      <div class="chatpanel__head">
+        <span class="chatpanel__avatar" aria-hidden="true">
+          <img src="/static/images/mark.svg" alt="" width="32" height="32">
+        </span>
+        <div class="chatpanel__id">
+          <b>DispatchIQ Copilot</b>
+          <span><i></i> AI assistant &middot; replies instantly</span>
+        </div>
+      </div>
+
+      <div class="thread" id="thread" role="log" aria-live="polite" aria-label="Conversation">
+        <div class="msg msg--ai msg--intro">
+          <span class="msg__who" aria-hidden="true">D</span>
+          <div class="msg__body">
+            <p>
+              Hi &mdash; I'm the DispatchIQ Copilot. I'm an AI assistant, not a person, and
+              DispatchIQ is still at the planning stage, so I'll be clear about what's designed
+              versus what's built.
+            </p>
+            <p>Tell me how you run today, or pick one below.</p>
+          </div>
+        </div>
+
+        <div class="chips" id="chips">
+          <button class="chip" data-q="I run 6 trucks and dispatch them myself between driving. Most of my evening goes on rate cons and chasing brokers for appointment times. What would DispatchIQ actually change for me?">
+            <b>Would this work for my fleet?</b>
+            <span>Describe how you run and see what it asks back.</span>
+          </button>
+          <button class="chip" data-q="Does DispatchIQ replace my ELD, and how does it stay on the right side of FMCSA hours-of-service rules?">
+            <b>Does it replace my ELD?</b>
+            <span>Where it defers to a certified system.</span>
+          </button>
+          <button class="chip" data-q="Does the AI accept loads and negotiate rates on its own? I'm not handing rate negotiation to a machine.">
+            <b>Will it book loads without me?</b>
+            <span>The human-in-the-loop boundary, and why.</span>
+          </button>
+          <button class="chip" data-q="What does DispatchIQ cost, and what exactly am I paying for on top of the monthly subscription?">
+            <b>What does it cost?</b>
+            <span>Subscription plus usage, and why it's split.</span>
+          </button>
+          <button class="chip" data-q="How accurate is the document extraction on rate confirmations? Give me a percentage.">
+            <b>How accurate is extraction?</b>
+            <span>Watch it refuse a number nobody has measured.</span>
+          </button>
+          <button class="chip" data-q="I'd rather just talk to a person about this.">
+            <b>&ldquo;Just get me a person.&rdquo;</b>
+            <span>The handoff, in one turn.</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="composer">
+        <form class="composer__form" id="composer">
+          <label class="visually-hidden" for="input">Your message</label>
+          <textarea id="input" rows="1" placeholder="Tell it about your operation…" required></textarea>
+
+          <div class="composer__actions">
+            <button type="button" class="icon-btn" id="mic" aria-label="Record a message">
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+                <rect x="9" y="3" width="6" height="11" rx="3"/>
+                <path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/>
+              </svg>
+            </button>
+            <button type="submit" class="btn btn--sm" id="send">Send</button>
+          </div>
+        </form>
+
+        <div class="composer__status">
+          <span class="mono" id="status-text"></span>
+          <button class="chatpanel__reset" id="reset" type="button">Clear</button>
+        </div>
+
+        <div class="langs" id="langs" role="group" aria-label="Answer language">
+          <button class="lang is-active" data-lang="en">English</button>
+          <button class="lang" data-lang="es">Espa&ntilde;ol</button>
+          <button class="lang" data-lang="uz">O&#699;zbek</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="/static/js/chat.js?v={{ v }}" defer></script>
+{% endblock %}

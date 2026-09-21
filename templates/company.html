@@ -1,0 +1,380 @@
+{% extends "base.html" %}
+
+{% block title %}Company — {{ company.name }}{% endblock %}
+{% block description %}DispatchIQ's founder, market analysis, 24-month implementation plan, five-year roadmap and financial model — summarized from the business plan, with the status of each item stated plainly.{% endblock %}
+
+{% block content %}
+
+<section class="phero">
+  <div class="shell">
+    <span class="mono">Company</span>
+    <h1 class="rt">A plan, a founder, and nothing built yet</h1>
+    <p>
+      This page is a summary of the five-year business plan. It includes the parts that are
+      unflattering, because a plan that only shows its strong side is not a plan — it is a pitch.
+    </p>
+  </div>
+</section>
+
+<section class="sec sec--note">
+  <div class="shell">
+    <div class="note" style="margin-top:0">
+      <b>Current status, plainly.</b> No U.S. entity has been formed and no company name has been
+      selected; &ldquo;DispatchIQ&rdquo; is a working product name (Appendix B, items 1&ndash;3).
+      There is no state of incorporation, no U.S. cap table, no shipped software, no pilot
+      customers, no revenue and no outside funding on record. The founder's only existing
+      registered company is Armo Hospitality and Cleaning LLC in Doha, Qatar, in which she holds
+      25%.
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="founder">
+  <div class="shell">
+    <h2 class="sec__title sec__title--left rt">The founder</h2>
+
+    <div class="founder" style="margin-top:30px">
+      <div class="founder__card">
+        <h3>{{ founder.name }}</h3>
+        <span class="mono">{{ founder.role }}</span>
+        <p style="margin-top:14px; color:var(--muted); font-size:14.5px">
+          The argument of this plan is not that AI is having a moment. It is that this particular
+          founder has documented, specific preparation for this exact problem: formal dispatch
+          training, published compliance research spanning two regulatory regimes, and prior
+          experience forming and managing a registered company.
+        </p>
+        <p style="margin-top:14px; color:var(--muted); font-size:14.5px">
+          <b>{{ founder.home }}.</b> Responsibilities: business strategy, product direction,
+          business development, customer relationships, partnerships, operations and financial
+          management.
+        </p>
+      </div>
+
+      <ul>
+        {% for c in founder.credentials %}<li>{{ c }}</li>{% endfor %}
+      </ul>
+    </div>
+
+    <div class="note">
+      <b>Why the publications matter more than the enthusiasm.</b> The compliance boundaries this
+      product respects — the FMCSA ELD rules it must not attempt to replace — come out of the same
+      regulatory research as her 2026 reference work. That is also the clearest early customer
+      channel: the writing has already put her in front of the trucking audience the company
+      intends to sell to.
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--band" id="market">
+  <div class="shell">
+    <h2 class="sec__title rt">Market sizing, with the range disclosed</h2>
+    <p class="sec__lede">Section 2.2. Built from government carrier data rather than a single vendor report.</p>
+
+    <div class="grid3" style="margin-top:32px">
+      <div class="tile spot">
+        <span class="mono">TAM</span>
+        <h3>$18.6B → $68.4B</h3>
+        <p>Global transportation-management and dispatch software spend, 2025 to 2033, about 17.8%
+          CAGR. Source: Grand View Research TMS market report, 2026.</p>
+      </div>
+      <div class="tile spot">
+        <span class="mono">SAM</span>
+        <h3>~1.5 million carriers</h3>
+        <p>U.S. carriers at 1–20 power units — roughly 1.03 million at 1–6 and 504,000 at 7–20.
+          Source: FMCSA MCMIS, 2025 data.</p>
+      </div>
+      <div class="tile spot">
+        <span class="mono">SOM · Years 1–2</span>
+        <h3>A few hundred accounts</h3>
+        <p>Owner-operators and small fleets reachable by direct outreach, trucking communities and
+          the founder's own network — consistent with the Year 2 revenue assumption of $500,000.</p>
+      </div>
+    </div>
+
+    <div class="note">
+      Published estimates for the &ldquo;trucking dispatch software&rdquo; category ranged from
+      roughly $1.2 billion to $18.6 billion in 2026 depending on whether the figure scopes the
+      whole TMS market, the dispatch segment or the AI-dispatch niche. The plan discloses that
+      range rather than presenting one vendor's number as authoritative, and flags the SOM figure
+      as deliberately conservative and directional — to be replaced with a bottoms-up number once
+      the investment amount, hiring plan and U.S. business location are settled.
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="shell">
+    <h2 class="sec__title rt">What is actually driving demand</h2>
+
+    <div class="grid3" style="margin-top:32px">
+      <div class="tile spot">
+        <span class="mono">Labor</span>
+        <h3>A shortfall, not a dip</h3>
+        <p>
+          ATA estimates a 2026 shortfall of roughly 82,000 qualified drivers, and revised BLS data
+          show roughly 122,000 positions lost since the October 2022 peak. A federal rule effective
+          March 2026 additionally bars asylum seekers, refugees and DACA recipients from obtaining
+          or renewing CDLs; foreign-born drivers are close to one in six U.S. truckers.
+        </p>
+      </div>
+      <div class="tile spot">
+        <span class="mono">Cost</span>
+        <h3>A fixed cost small carriers cannot spread</h3>
+        <p>
+          A fully loaded dispatcher runs roughly $56,000 to $91,000 a year. A carrier with one or
+          two dispatchers absorbs that across a handful of trucks; a large fleet spreads it across
+          hundreds.
+        </p>
+      </div>
+      <div class="tile spot">
+        <span class="mono">Adoption</span>
+        <h3>Past the experiment stage</h3>
+        <p>
+          29% of carriers already use AI for load acceptance and dispatching (Trimble
+          Transportation Pulse Report), and 96% of transportation leaders report using some form of
+          generative AI (Descartes 2025 Benchmark Survey). The market does not need convincing that
+          these tools exist.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--band" id="roadmap">
+  <div class="shell">
+    <h2 class="sec__title sec__title--left rt">24-month implementation plan</h2>
+    <p style="color:var(--muted); margin-top:10px">Section 20.</p>
+
+    <div class="rail2">
+      <div class="rail2__row">
+        <div class="rail2__when">Months 1–3</div>
+        <div class="rail2__what">
+          <h3>Product foundation</h3>
+          <p>Finalize architecture, build the dispatcher dashboard, implement the AI assistant,
+            create initial document processing, establish the database and the security foundation.</p>
+          <ul><li><b>Objective:</b> a functional initial product suitable for controlled pilot testing.</li></ul>
+        </div>
+      </div>
+      <div class="rail2__row">
+        <div class="rail2__when">Months 4–6</div>
+        <div class="rail2__what">
+          <h3>Pilot program</h3>
+          <p>Recruit trucking companies, onboard owner-operators, test dispatch workflows, collect
+            feedback, measure AI accuracy, improve extraction and matching.</p>
+          <ul><li><b>Objective:</b> demonstrate that the system reduces measurable administrative workload.</li></ul>
+        </div>
+      </div>
+      <div class="rail2__row">
+        <div class="rail2__when">Months 7–12</div>
+        <div class="rail2__what">
+          <h3>Commercial launch</h3>
+          <p>Paid subscriptions, onboarding, customer support, better integrations, analytics,
+            expanded communication automation.</p>
+          <ul><li><b>Objective:</b> a repeatable customer-acquisition and retention process.</li></ul>
+        </div>
+      </div>
+      <div class="rail2__row">
+        <div class="rail2__when">Months 13–18</div>
+        <div class="rail2__what">
+          <h3>Platform expansion</h3>
+          <p>ELD and TMS integrations, improved load matching, AI communication workflows, advanced
+            reporting, Voice AI development begins.</p>
+          <ul><li><b>Objective:</b> increase customer value and average revenue per customer.</li></ul>
+        </div>
+      </div>
+      <div class="rail2__row">
+        <div class="rail2__when">Months 19–24</div>
+        <div class="rail2__what">
+          <h3>Scale and enterprise readiness</h3>
+          <p>Enterprise accounts, stronger security controls, advanced integrations, multi-user
+            administration, partner programs, automated onboarding.</p>
+          <ul><li><b>Objective:</b> move from a dispatch assistant to a scalable transportation-technology platform.</li></ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="shell">
+    <h2 class="sec__title sec__title--left rt">Five-year roadmap</h2>
+
+    <div class="rail2">
+      <div class="rail2__row">
+        <div class="rail2__when">Year 1 — Validation</div>
+        <div class="rail2__what">
+          <h3>Prove carriers will pay for AI dispatch assistance</h3>
+          <p>MVP, pilot customers, product-market validation, retention, core integrations.</p>
+        </div>
+      </div>
+      <div class="rail2__row">
+        <div class="rail2__when">Year 2 — Commercialization</div>
+        <div class="rail2__what">
+          <h3>Establish recurring revenue</h3>
+          <p>Customer acquisition, small fleets, workflow automation, integrations, customer success.</p>
+        </div>
+      </div>
+      <div class="rail2__row">
+        <div class="rail2__when">Year 3 — Scale</div>
+        <div class="rail2__what">
+          <h3>Expand the platform and the customer base</h3>
+          <p>Mid-sized carriers, Voice AI, advanced analytics, partner channels, a larger engineering team.</p>
+        </div>
+      </div>
+      <div class="rail2__row">
+        <div class="rail2__when">Year 4 — Enterprise</div>
+        <div class="rail2__what">
+          <h3>Develop enterprise transportation customers</h3>
+          <p>Enterprise integrations, security, multi-fleet management, advanced automation, strategic partnerships.</p>
+        </div>
+      </div>
+      <div class="rail2__row">
+        <div class="rail2__when">Year 5 — Platform</div>
+        <div class="rail2__what">
+          <h3>An AI operating layer for trucking businesses</h3>
+          <p>Autonomous workflow execution, AI dispatch and communication agents, predictive alerts,
+            advanced route and load recommendations, voice-based dispatch, transportation analytics.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--band">
+  <div class="shell">
+    <h2 class="sec__title rt">The illustrative financial model</h2>
+    <p class="sec__lede">
+      Section 24. No historical customer, revenue, pricing, payroll or capitalization information
+      exists, so this is a planning model — not a statement of company performance.
+    </p>
+
+    <div class="stats stats--5">
+      <div class="stat"><b>$100K</b><span>Year 1 revenue</span><em>EBITDA −$130K</em></div>
+      <div class="stat"><b>$500K</b><span>Year 2 revenue</span><em>EBITDA −$25K</em></div>
+      <div class="stat"><b>$1.5M</b><span>Year 3 revenue</span><em>EBITDA $340K</em></div>
+      <div class="stat"><b>$3.5M</b><span>Year 4 revenue</span><em>EBITDA $1.18M</em></div>
+      <div class="stat"><b>$6.5M</b><span>Year 5 revenue</span><em>EBITDA $2.485M</em></div>
+    </div>
+
+    <div class="grid2" style="margin-top:34px">
+      <div class="tile">
+        <span class="mono">Metrics management will watch</span>
+        <ul>
+          <li>Monthly and annual recurring revenue</li>
+          <li>Customer acquisition cost</li>
+          <li>Customer lifetime value</li>
+          <li>Churn — the critical product-market-fit indicator</li>
+          <li>Gross margin, because AI inference, voice, document processing and third-party API
+            costs rise with usage</li>
+          <li>Revenue per truck</li>
+        </ul>
+      </div>
+      <div class="tile">
+        <span class="mono">Three scenarios, and which one governs cash</span>
+        <p><b>Conservative:</b> slower adoption, higher infrastructure costs.<br>
+           <b>Base case:</b> moderate acquisition, stable retention.<br>
+           <b>Growth case:</b> faster adoption, successful Voice AI, enterprise contracts.</p>
+        <p style="margin-top:12px"><b>Cash-management decisions use the conservative scenario</b> —
+          that is the plan's own instruction, not a hedge added here.</p>
+      </div>
+    </div>
+
+    <div class="note">
+      <b>Hiring (Section 23).</b> Illustrative targets, not guaranteed employment outcomes: 2&ndash;3
+      employees in Year 1, 5&ndash;7 in Year 2, 9&ndash;13 in Year 3, 15&ndash;22 in Year 4,
+      25&ndash;35 in Year 5 — concentrated in software engineering, AI development, transportation
+      operations, sales, customer success and administration.
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="shell">
+    <h2 class="sec__title rt">Risks the plan names</h2>
+
+    <div class="grid3" style="margin-top:32px">
+      <div class="tile spot">
+        <span class="mono">28.1 · AI accuracy</span>
+        <p>An incorrect recommendation is an operational problem. Mitigated by human approval,
+          business rules, confidence thresholds, monitoring, audit trails and continuous evaluation.</p>
+      </div>
+      <div class="tile spot">
+        <span class="mono">28.2 · Regulatory</span>
+        <p>Hours-of-service, ELD, safety, privacy and recordkeeping requirements apply. Mitigated by
+          integrating with compliant systems rather than replacing regulated ones uncertified.</p>
+      </div>
+      <div class="tile spot">
+        <span class="mono">28.3 · Competition</span>
+        <p>Existing TMS and dispatch vendors can add AI features. Mitigated by specialized workflows
+          and deep dispatch integration rather than generic chatbot functionality.</p>
+      </div>
+      <div class="tile spot">
+        <span class="mono">28.4 · Customer resistance</span>
+        <p>Some dispatchers will read automation as a threat to their jobs. Mitigated by positioning
+          this as a productivity tool that removes repetitive work, not a workforce replacement.</p>
+      </div>
+      <div class="tile spot">
+        <span class="mono">28.5 · Infrastructure cost</span>
+        <p>AI and voice processing get expensive at volume. Mitigated by usage-based pricing, model
+          routing, efficient prompts, caching, usage monitoring and optimization.</p>
+      </div>
+      <div class="tile spot">
+        <span class="mono">28.6 · Integration</span>
+        <p>ELD, TMS, load-board and mapping integrations are technically complex. Mitigated by a
+          standardized integration layer with priority set by customer demand.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--wash" id="significance">
+  <div class="shell">
+    <div class="prose" style="max-width:820px">
+      <span class="mono" style="color:var(--green)">Section 32</span>
+      <h2 style="margin-top:10px">Why this matters beyond one company</h2>
+      <p>
+        Trucking moves 72.5% of U.S. freight value and 64.5% of its weight. Within it, roughly 92%
+        of carriers run ten trucks or fewer, and FMCSA data put the 1&ndash;20-power-unit population
+        near 1.5 million. That population is simultaneously the backbone of national freight
+        capacity and the segment least able to afford an enterprise TMS or a full-time dispatch
+        staff.
+      </p>
+      <p>
+        The 2026 driver shortfall and the CDL eligibility rule effective March 2026 are not
+        cyclical noise. Tools that let existing dispatchers and owner-operators cover more trucks
+        without proportionally more administrative headcount are a near-term substitute for hiring
+        that, for many small carriers, is not available at any price.
+      </p>
+      <p>
+        And because dispatch-level inefficiency — missed appointments, mismatched loads, slow broker
+        communication — propagates cost into the supply chain trucking serves, incremental gains at
+        the scale of 1.5 million small carriers compound well beyond any individual carrier.
+      </p>
+      <p>
+        The intended contribution is not to replace transportation infrastructure or the dispatchers
+        who run it, but to improve the efficiency of the businesses and personnel already operating
+        inside it.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="help">
+  <div class="shell help__inner">
+    <div class="help__copy">
+      <h2>Questions the plan does not answer?</h2>
+      <p>Ask the copilot. Where the plan is silent, it is instructed to say so rather than fill the gap.</p>
+      <div class="help__cta">
+        <a class="btn btn--ghost" href="/demo" data-agent>Ask the copilot</a>
+        <a class="btn btn--ghost" href="/demo#pilot">Contact the founder</a>
+      </div>
+    </div>
+    <div class="help__media">
+      <div class="help__stage">
+        <img src="/static/images/hero-2.jpg" alt="An owner-operator in front of a line of tractors" width="1000" height="700" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}Terms of Use — {{ company.name }}{% endblock %}
+{% block description %}Terms governing use of the DispatchIQ website and the AI copilot on it.{% endblock %}
+
+{% block content %}
+
+<section class="phero">
+  <div class="shell">
+    <span class="mono">Legal</span>
+    <h1>Terms of Use</h1>
+    <p>These terms govern this website and the AI copilot on it. They do not govern a product, because there is not one yet.</p>
+  </div>
+</section>
+
+<section class="sec sec--tight">
+  <div class="shell prose">
+
+    <h2>1. What this site is</h2>
+    <p>
+      An informational website describing a planned AI Truck Dispatch Assistant, plus an AI
+      assistant that answers questions about it. DispatchIQ is a working product name. No U.S.
+      entity has been formed, no software has shipped, and there are no customers.
+    </p>
+
+    <h2>2. Nothing here is an offer</h2>
+    <p>
+      Pricing, capabilities, timelines, integrations and market figures on this site are drawn from
+      a business plan and are planning assumptions. They are not offers, quotations, commitments or
+      guarantees, and they may change. No contract is formed by reading this site or by talking to
+      the assistant.
+    </p>
+
+    <h2>3. The assistant is an AI</h2>
+    <p>
+      The copilot is software, not a person, and it says so. It can be wrong. Do not rely on it for
+      an operational, commercial or regulatory decision without confirming the answer with a human
+      — and if something it says conflicts with this site or with the business plan, the written
+      source governs.
+    </p>
+
+    <h2>4. Not regulatory, legal or financial advice</h2>
+    <p>
+      Nothing on this site or from the assistant is legal, tax, insurance, financial or regulatory
+      advice. <b>DispatchIQ is not an electronic logging device and is not a substitute for one.</b>
+      FMCSA requires ELDs to meet its technical standards and to be certified and registered, and
+      carriers remain responsible for using compliant devices. Verify your own hours-of-service,
+      recordkeeping and safety obligations against current FMCSA guidance and a qualified
+      professional.
+    </p>
+
+    <h2>5. Acceptable use</h2>
+    <p>You agree not to:</p>
+    <ul>
+      <li>submit unlawful, abusive or deliberately misleading content;</li>
+      <li>attempt to extract the assistant's instructions, or to make it act outside its stated role;</li>
+      <li>probe, scan, overload or otherwise interfere with the site or its rate limits;</li>
+      <li>submit another person's personal data without a lawful basis for doing so;</li>
+      <li>scrape or reuse this site's content for a competing commercial product.</li>
+    </ul>
+
+    <h2>6. Content ownership</h2>
+    <p>
+      Text, design and code on this site belong to the founder. Photographs are licensed from their
+      respective photographers. Third-party company names and published prices are referenced for
+      comparison and remain the property of their owners; their appearance here implies no
+      affiliation or endorsement in either direction.
+    </p>
+
+    <h2>7. No warranty</h2>
+    <p>
+      This site and the assistant are provided as-is, without warranty of any kind. Availability is
+      not guaranteed and neither is the accuracy of any answer.
+    </p>
+
+    <h2>8. Limitation of liability</h2>
+    <p>
+      To the maximum extent the law allows, no liability is accepted for indirect, incidental,
+      consequential or business losses arising from use of this site or reliance on anything it or
+      the assistant says.
+    </p>
+
+    <h2>9. Changes</h2>
+    <p>
+      These terms may be updated as the venture develops — particularly once an entity is formed
+      and a product exists. Continued use after a change means acceptance of it.
+    </p>
+
+    <h2>10. Contact</h2>
+    <p><a href="mailto:{{ company.email }}">{{ company.email }}</a></p>
+  </div>
+</section>
+
+{% endblock %}

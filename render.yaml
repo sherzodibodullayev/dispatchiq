@@ -1,0 +1,65 @@
+# Render blueprint. Dashboard → New → Blueprint → point it at this repo.
+#
+# Render runs a normal, always-on process, which is why it is the simpler of
+# the two hosts for this app: Redis is optional here (see the note on workers
+# below), whereas on serverless it is mandatory.
+services:
+  - type: web
+    name: dispatchiq
+    runtime: python
+    plan: free
+    # uvicorn is not in requirements.txt any more: it is dead weight inside a
+    # Vercel function and only a host like this one, which runs its own
+    # process, actually needs it.
+    buildCommand: pip install -r requirements.txt 'uvicorn[standard]>=0.27'
+
+    # --workers 1 is not a typo. Without Redis, conversation history and the
+    # API rate limit live in process memory, so a second worker would have its
+    # own copy of both and visitors would lose their thread at random. Add
+    # Redis (REDIS_URL) before adding workers.
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT --workers 1
+
+    healthCheckPath: /health
+
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.12.6"
+
+      - key: ENV
+        value: production
+
+      # Render generates this once and keeps it. Never put it in the repo.
+      - key: SESSION_SECRET
+        generateValue: true
+
+      # sync: false = "prompt me in the dashboard, don't store it here".
+      - key: OPENAI_API_KEY
+        sync: false
+
+      - key: CHAT_MODEL
+        value: gpt-4.1
+
+      # Shown in the footer, the demo page and the pricing page. Placeholders
+      # live in config.py — set the real ones here, not in the templates.
+      - key: CONTACT_EMAIL
+        sync: false
+      - key: CONTACT_LINKEDIN
+        sync: false
+
+      # Keep the temporary .onrender.com address out of Google. Flip to true
+      # only after the real domain is attached and serving, and set SITE_URL
+      # to that domain at the same time.
+      - key: ALLOW_INDEXING
+        value: "false"
+      - key: SITE_URL
+        sync: false
+
+      # Leave empty. The browser calls the API on the same origin, so CORS
+      # never applies. Only set this if something off-domain must call /api/*.
+      - key: ALLOWED_ORIGINS
+        value: ""
+
+      # Optional on Render. Set it when you move past one worker, or want
+      # conversations to survive a redeploy.
+      - key: REDIS_URL
+        sync: false

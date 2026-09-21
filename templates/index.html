@@ -1,0 +1,520 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- ======================================================================
+     HERO — split: copy left, a three-photo crossfade right
+     ==================================================================== -->
+<section class="hero">
+  <div class="shell hero__inner">
+
+    <div class="hero__copy">
+      <span class="hero__eyebrow">
+        <b>Pilot</b> Months 4&ndash;6 &mdash; slots open to owner-operators and small fleets
+      </span>
+
+      <h1 class="rt">
+        Helping you realize the full potential of
+        <span class="accent">AI-assisted dispatch</span>
+      </h1>
+
+      <p class="hero__sub">
+        DispatchIQ is a planned AI dispatch assistant for U.S. carriers. It organizes loads, reads
+        your rate cons, matches freight to the right truck and drafts the broker email &mdash; and
+        leaves every decision that carries risk with the dispatcher.
+      </p>
+
+      <div class="hero__cta">
+        <a class="btn btn--lg btn--ghost flipbtn" href="/platform">
+          <span class="flipbtn__t"><span>For Dispatchers</span><span>See the copilot</span></span>
+        </a>
+        <a class="btn btn--lg btn--solid" href="/demo#pilot">For Carriers</a>
+      </div>
+
+      <p class="hero__note">
+        Not an ELD, and not a replacement for one. It reads from yours.
+      </p>
+    </div>
+
+    <div class="hero__media">
+      <!-- Three frames, crossfaded every 3s by site.js. Without JS the first
+           one simply stays up, which is a finished hero photo. -->
+      <div class="hero__stage" id="heroStage" data-interval="3000">
+        <img class="hero__slide is-on" data-pos="1" src="/static/images/hero-1.jpg" alt="A dispatcher on a headset working a load in a logistics facility" width="900" height="600" fetchpriority="high">
+        <img class="hero__slide" data-pos="2" src="/static/images/hero-2.jpg" alt="An owner-operator standing in front of his tractors" width="900" height="600" loading="lazy">
+        <img class="hero__slide" data-pos="3" src="/static/images/hero-3.jpg" alt="A driver at the wheel at sunrise" width="900" height="600" loading="lazy">
+        <span class="hero__wedge" aria-hidden="true"></span>
+      </div>
+      <div class="hero__dots" id="heroDots" role="tablist" aria-label="Hero image"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ======================================================================
+     CREDENTIALS STRIP
+     ==================================================================== -->
+<div class="credbar">
+  <div class="shell credbar__inner">
+    <span class="credbar__label">Built around</span>
+    <span class="credbar__item">FMCSA ELD boundaries</span>
+    <span class="credbar__item">Human approval</span>
+    <span class="credbar__item">ELD &amp; TMS integration</span>
+    <span class="credbar__item">Role-based access</span>
+    <span class="credbar__item">Audit logging</span>
+    <span class="credbar__item">Usage-based pricing</span>
+  </div>
+</div>
+
+<!-- ======================================================================
+     TRUSTED PARTNER + "I WANT TO…"
+     ==================================================================== -->
+<section class="sec sec--tight sec--band">
+  <div class="shell partner">
+    <div>
+      <h2 class="rt">Your dispatch desk, with the repetitive half taken off it</h2>
+      <p>
+        Roughly 92% of U.S. carriers run ten trucks or fewer, and a fully loaded dispatcher costs
+        somewhere between $56,000 and $91,000 a year &mdash; a fixed cost a small carrier absorbs
+        across three trucks instead of three hundred. DispatchIQ is designed to sit well below that
+        line and give the dispatcher you already have more trucks' worth of reach.
+      </p>
+    </div>
+
+    <div>
+      <p class="want__label">I want to&hellip;</p>
+      <div class="want__grid">
+        <a class="want__link" href="/demo#pilot">Join the pilot program</a>
+        <a class="want__link" href="/platform#copilot">See the AI copilot</a>
+        <a class="want__link" href="/platform#documents">Stop retyping rate cons</a>
+        <a class="want__link" href="/pricing">Understand the pricing</a>
+        <a class="want__link" href="/platform#matching">Match loads to trucks</a>
+        <a class="want__link" href="/carriers">Find my fleet size</a>
+        <a class="want__link" href="/company#founder">Meet the founder</a>
+        <a class="want__link" href="/demo">Talk to the copilot</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     WHY — four differentiators (Section 29)
+     ==================================================================== -->
+<section class="sec">
+  <div class="shell">
+    <h2 class="sec__title rt">Why DispatchIQ?</h2>
+    <p class="sec__lede">
+      The differentiator is not &ldquo;AI.&rdquo; It is where the AI stops.
+    </p>
+
+    <div class="why">
+      <article class="why__card spot">
+        <span class="why__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 30h22V15H4zM26 20h8l6 6v4H26z"/>
+            <circle cx="12" cy="35" r="3.5"/><circle cx="22" cy="35" r="3.5"/><circle cx="34" cy="35" r="3.5"/>
+          </svg>
+        </span>
+        <h3>Trucking-specific AI</h3>
+        <p>
+          Built around rate cons, BOLs, deadhead, detention and appointment windows &mdash; the
+          terminology, documents and workflows of dispatch, not a general chatbot pointed at a fleet.
+        </p>
+        <a class="more" href="/platform">Learn more</a>
+      </article>
+
+      <article class="why__card spot">
+        <span class="why__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="8" width="38" height="28" rx="3"/>
+            <path d="M5 16h38M12 23h9M12 29h14M29 23h7M29 29h7"/>
+          </svg>
+        </span>
+        <h3>Dispatcher-centered UX</h3>
+        <p>
+          One consolidated view of trucks, drivers, assignments, loads, appointments, alerts and
+          document status &mdash; designed around the way a dispatch desk actually runs a day.
+        </p>
+        <a class="more" href="/platform#dashboard">Learn more</a>
+      </article>
+
+      <article class="why__card spot">
+        <span class="why__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M24 6l15 6v11c0 9.4-6.4 17-15 19-8.6-2-15-9.6-15-19V12z"/>
+            <path d="M17.5 23.5l4.5 4.5 9-9.5"/>
+          </svg>
+        </span>
+        <h3>Human-controlled automation</h3>
+        <p>
+          Load acceptance, rate negotiation, driver instructions, safety calls and exceptions stay
+          with people. The AI recommends and prepares; it does not commit your business.
+        </p>
+        <a class="more" href="/platform#governance">Learn more</a>
+      </article>
+
+      <article class="why__card spot">
+        <span class="why__icon" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 38V25M17 38V14M28 38V20M39 38V9"/>
+            <path d="M4 43h40"/>
+          </svg>
+        </span>
+        <h3>Usage-based economics</h3>
+        <p>
+          AI inference, voice and document processing cost more as you use them, so the price moves
+          with usage in the open rather than being buried in a flat fee you overpay at low volume.
+        </p>
+        <a class="more" href="/pricing">Learn more</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     CAPABILITIES — tag filter + search
+     ==================================================================== -->
+<section class="sec sec--band" id="capabilities">
+  <div class="shell">
+    <h2 class="sec__title rt">Planned capabilities</h2>
+    <p class="sec__lede">
+      Everything below is drawn from the five-year business plan. Filter by area, or search.
+    </p>
+
+    <div class="tags" id="capTags" role="group" aria-label="Filter capabilities">
+      <button class="tag is-on" data-tag="all">All capabilities</button>
+      <button class="tag" data-tag="loads">Load management</button>
+      <button class="tag" data-tag="matching">Truck matching</button>
+      <button class="tag" data-tag="docs">Document intelligence</button>
+      <button class="tag" data-tag="comms">Communication</button>
+      <button class="tag" data-tag="monitor">Monitoring &amp; alerts</button>
+      <button class="tag" data-tag="integrations">Integrations</button>
+      <button class="tag tag--accent" data-tag="planned">Roadmap only</button>
+    </div>
+
+    <form class="finder" id="capForm" role="search">
+      <label class="visually-hidden" for="capQ">Search capabilities</label>
+      <input type="search" id="capQ" placeholder="Search by name…" autocomplete="off">
+      <button class="btn btn--solid" type="submit">Search</button>
+    </form>
+
+    <div class="finder__out" id="capOut" aria-live="polite"></div>
+
+    <div class="finder__more" id="capMore" hidden>
+      <button class="btn btn--ghost btn--sm" type="button" id="capMoreBtn">View all capabilities</button>
+      <span class="finder__count" id="capCount"></span>
+    </div>
+
+    <div class="sec__foot">
+      <a class="more" href="/platform">See the full platform</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     WHO WE SERVE — tabbed panel over a soft band
+     ==================================================================== -->
+<section class="sec sec--wash">
+  <div class="shell">
+    <div class="panel">
+      <div>
+        <h2>Who it's for</h2>
+
+        <div class="tabs" role="tablist" aria-label="Customer segments">
+          <button class="tab is-on" role="tab" aria-selected="true" aria-controls="seg-oo" id="tab-oo">Owner-Operators</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="seg-fleet" id="tab-fleet">Small Fleets</button>
+          <button class="tab" role="tab" aria-selected="false" aria-controls="seg-mid" id="tab-mid">Mid-Market &amp; Beyond</button>
+        </div>
+
+        <div class="tabpane" id="seg-oo" role="tabpanel" aria-labelledby="tab-oo">
+          <h3>Owner-Operators</h3>
+          <p>
+            You drive, you dispatch, you do the paperwork, and the administrative half happens after
+            the driving day ends. DispatchIQ is designed as a cheaper alternative to hiring
+            administrative help you cannot justify at one or two trucks.
+          </p>
+          <div class="leaflist">
+            <a href="/platform#documents">Rate confirmation extraction</a>
+            <a href="/platform#matching">Load organization and shortlisting</a>
+            <a href="/platform#comms">Broker and shipper message drafts</a>
+            <a href="/platform#monitoring">Appointment and deadline reminders</a>
+            <a href="/platform#copilot">Ask-anything dispatch copilot</a>
+          </div>
+          <a class="btn btn--ghost" href="/carriers#owner-operators">All owner-operator detail</a>
+        </div>
+
+        <div class="tabpane" id="seg-fleet" role="tabpanel" aria-labelledby="tab-fleet" hidden>
+          <h3>Small Fleets</h3>
+          <p>
+            The plan's initial core market: carriers running several trucks with one or two
+            dispatchers. The goal is dispatcher productivity &mdash; more trucks covered per
+            dispatcher, not fewer dispatchers.
+          </p>
+          <div class="leaflist">
+            <a href="/platform#dashboard">Consolidated dispatcher dashboard</a>
+            <a href="/platform#matching">Load-to-truck matching with ranked options</a>
+            <a href="/platform#monitoring">Exception and conflict alerts</a>
+            <a href="/platform#comms">Driver and customer status updates</a>
+            <a href="/platform#integrations">ELD and TMS integration</a>
+          </div>
+          <a class="btn btn--ghost" href="/carriers#small-fleets">All small-fleet detail</a>
+        </div>
+
+        <div class="tabpane" id="seg-mid" role="tabpanel" aria-labelledby="tab-mid" hidden>
+          <h3>Mid-Market &amp; Beyond</h3>
+          <p>
+            As the platform matures it is planned to support multiple dispatchers, multiple
+            terminals, higher load volume and enterprise integrations &mdash; and later, brokers and
+            3PLs. The initial product stays focused rather than solving every logistics problem at
+            once.
+          </p>
+          <div class="leaflist">
+            <a href="/carriers#mid-market">Multi-dispatcher and multi-terminal operations</a>
+            <a href="/platform#integrations">Enterprise integrations</a>
+            <a href="/platform#governance">Administrative controls and audit trails</a>
+            <a href="/carriers#brokers">Brokers and 3PLs &mdash; future expansion</a>
+          </div>
+          <a class="btn btn--ghost" href="/carriers#mid-market">All mid-market detail</a>
+        </div>
+      </div>
+
+      <div class="panel__media">
+        <img src="/static/images/who-we-serve.jpg" alt="A tractor-trailer running a highway lane at dusk" width="800" height="600" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     THE PROBLEM, in the founder's own framing
+     ==================================================================== -->
+<section class="quote">
+  <div class="quote__media">
+    <img src="/static/images/testimonial.jpg" alt="Trucks parked under a highway overpass at night" width="1000" height="700" loading="lazy">
+  </div>
+  <div class="quote__body">
+    <span class="quote__glyph" aria-hidden="true">&ldquo;</span>
+    <span class="mono quote__label">Why this product exists</span>
+    <blockquote>
+      A dispatcher identifies loads, calls brokers, calls drivers, tracks trucks, watches
+      appointments, keeps records, handles the delays and does the paperwork. Most of that is
+      repetitive information processing. That is the half a machine should be doing.
+    </blockquote>
+    <cite>&mdash; {{ founder.name }}, Founder &amp; CEO &middot; drawn from Section 3 of the business plan</cite>
+  </div>
+</section>
+
+<!-- ======================================================================
+     MARKET — the numbers, each with its source
+     ==================================================================== -->
+<section class="sec sec--tight">
+  <div class="shell">
+    <h2 class="sec__title sec__title--left rt">The market, with sources attached</h2>
+
+    <div class="stats">
+      <div class="stat">
+        <b>72.5%</b>
+        <span>of U.S. freight value moves by truck</span>
+        <em>Bureau of Transportation Statistics, 2023 data</em>
+      </div>
+      <div class="stat">
+        <b>~1.5M</b>
+        <span>U.S. carriers at 1&ndash;20 power units</span>
+        <em>FMCSA MCMIS, 2025 data</em>
+      </div>
+      <div class="stat">
+        <b>92%</b>
+        <span>of carriers run ten trucks or fewer</span>
+        <em>2026 ATA-sourced industry reporting</em>
+      </div>
+      <div class="stat">
+        <b>29%</b>
+        <span>already use AI for load acceptance and dispatch</span>
+        <em>Trimble Transportation Pulse Report, 2026</em>
+      </div>
+    </div>
+
+    <div class="note">
+      <b>On market sizing.</b> Published estimates for the dispatch-software category ranged from
+      roughly $1.2 billion to $18.6 billion in 2026 depending on whether the figure scopes the whole
+      TMS market, the dispatch segment, or the AI-dispatch niche. Rather than pick the flattering
+      one, this plan builds its sizing from government carrier-population data and discloses the
+      range. <a href="/company#market">See the full TAM / SAM / SOM breakdown</a>.
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     RESOURCES
+     ==================================================================== -->
+<section class="sec sec--band">
+  <div class="shell">
+    <div class="res__head">
+      <div>
+        <h2 class="sec__title sec__title--left">Notes from the build</h2>
+        <div class="tabs" role="tablist" aria-label="Filter notes">
+          <button class="tab is-on" role="tab" aria-selected="true" data-res="all">All</button>
+          <button class="tab" role="tab" aria-selected="false" data-res="ops">Operations</button>
+          <button class="tab" role="tab" aria-selected="false" data-res="compliance">Compliance</button>
+        </div>
+      </div>
+      <a class="btn btn--ghost" href="/company#roadmap">View the roadmap</a>
+    </div>
+
+    <div class="cards" id="resCards">
+      <article class="card" data-res="ops">
+        <img class="card__img" src="/static/images/res-1.jpg" alt="An aerial view of a freight cross-dock" width="700" height="450" loading="lazy">
+        <div class="card__body">
+          <p class="card__kicker">Operations &middot; Dispatchers</p>
+          <h3>Why load matching has to stay a recommendation</h3>
+          <p class="card__date">Section 8 &middot; Load-Matching Engine</p>
+          <p>
+            The engine weighs location, equipment, driver availability, appointment windows and
+            travel time into a ranked shortlist. Ranking it is useful; booking it is not the
+            machine's call.
+          </p>
+          <a class="more" href="/platform#matching">Learn more</a>
+        </div>
+      </article>
+
+      <article class="card" data-res="ops">
+        <img class="card__img" src="/static/images/res-2.jpg" alt="A warehouse floor mid-shift" width="700" height="450" loading="lazy">
+        <div class="card__body">
+          <p class="card__kicker">Operations &middot; Owner-Operators</p>
+          <h3>Seven documents a dispatcher retypes, and what gets pulled out</h3>
+          <p class="card__date">Section 11 &middot; Document Intelligence</p>
+          <p>
+            Rate cons, BOLs, PODs, lumper receipts, detention paperwork, invoices, appointment
+            confirmations &mdash; down to locations, times, commodity, weight, equipment and
+            reference numbers.
+          </p>
+          <a class="more" href="/platform#documents">Learn more</a>
+        </div>
+      </article>
+
+      <article class="card" data-res="compliance">
+        <img class="card__img" src="/static/images/res-3.jpg" alt="A line of tractor-trailers in a winter yard" width="700" height="450" loading="lazy">
+        <div class="card__body">
+          <p class="card__kicker">Compliance &middot; Carriers</p>
+          <h3>Where an AI dispatch tool has to defer to a certified system</h3>
+          <p class="card__date">Sections 6 &amp; 28.2 &middot; Regulatory posture</p>
+          <p>
+            FMCSA requires ELDs to meet technical standards and be registered. The platform reads
+            authorized data from a compliant device; it does not claim to be one.
+          </p>
+          <a class="more" href="/platform#compliance">Learn more</a>
+        </div>
+      </article>
+    </div>
+
+    <div class="res__links">
+      <a class="more" href="/carriers">Everything for carriers</a>
+      <a class="more" href="/platform">Everything for dispatchers</a>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     FAQ
+     ==================================================================== -->
+<section class="sec" id="faq">
+  <div class="shell">
+    <h2 class="sec__title rt">Straight answers</h2>
+    <p class="sec__lede">The questions a dispatcher asks in the first two minutes.</p>
+
+    <div class="faq">
+      <details open>
+        <summary>Is this an ELD? Does it keep my hours of service?</summary>
+        <div class="faq__a"><div><p>
+          No, on both counts. FMCSA requires an ELD to meet specified technical requirements and to
+          be certified and registered, and DispatchIQ is not that. It is designed to integrate with
+          your existing compliant ELD and read authorized operational data from it. If a vendor
+          tells you their AI assistant replaces your ELD, ask to see the registration.
+        </p></div></div>
+      </details>
+
+      <details>
+        <summary>Will it accept loads or negotiate rates on its own?</summary>
+        <div class="faq__a"><div><p>
+          No. Load acceptance, pricing negotiation, driver instructions, unusual safety situations,
+          contractual disputes, exceptions and regulatory interpretation all stay with people. The
+          AI ranks, drafts, organizes and reminds. That boundary is the product's design, not a
+          limitation of the current version.
+        </p></div></div>
+      </details>
+
+      <details>
+        <summary>Can I use it today?</summary>
+        <div class="faq__a"><div><p>
+          Not yet. DispatchIQ is at the planning stage &mdash; there is no shipped software, no
+          paying customers and no revenue. Months 1&ndash;3 of the plan cover building the initial
+          product and Months 4&ndash;6 are the pilot program. What is open now is a conversation
+          about being one of the pilot carriers.
+        </p></div></div>
+      </details>
+
+      <details>
+        <summary>What will it cost?</summary>
+        <div class="faq__a"><div><p>
+          The published planning assumption is ${{ company.price_oo_low }}&ndash;${{ company.price_oo_high }}
+          a month for an owner-operator, ${{ company.price_fleet_low }}&ndash;${{ company.price_fleet_high }}
+          for a small fleet, ${{ company.price_pro_low }}&ndash;${{ company.price_pro_high }} for a
+          professional fleet, and from ${{ company.price_ent_from }} for enterprise &mdash; plus
+          usage for AI conversations, voice minutes, document processing and API calls. These are
+          planning figures to be validated in market testing, not quoted prices.
+          <a href="/pricing">Full pricing detail</a>.
+        </p></div></div>
+      </details>
+
+      <details>
+        <summary>Does my data go into someone's training set?</summary>
+        <div class="faq__a"><div><p>
+          The planned security design is account authentication, role-based access, encryption,
+          audit logging, secure API integrations, controlled data access, backup procedures and data
+          retention policies. The architecture is also deliberately not tied to a single AI model
+          provider. Specific contractual data terms will be published with the pilot agreement
+          rather than promised here in advance.
+        </p></div></div>
+      </details>
+
+      <details>
+        <summary>Who is building this?</summary>
+        <div class="faq__a"><div><p>
+          {{ founder.name }} &mdash; formal dispatch training through a state-licensed 18-lesson
+          logistics program completed with a 92% final exam, and author of a 2026 professional
+          reference on U.S. and EU truck dispatch compliance covering ELD recordkeeping,
+          hours-of-service enforcement, the EU Smart Tachograph regime, cabotage and broker
+          liability. <a href="/company#founder">Full background</a>.
+        </p></div></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ======================================================================
+     CLOSING CTA
+     ==================================================================== -->
+<section class="help">
+  <div class="shell help__inner">
+    <div class="help__copy">
+      <h2 class="rt">How can we help you?</h2>
+      <p>
+        Pilot conversations are run by the founder directly &mdash; not a sales team, because there
+        isn't one yet.
+      </p>
+      <div class="help__cta">
+        <a class="btn btn--ghost" href="/demo#pilot">Join the pilot</a>
+        <a class="btn btn--ghost" href="/pricing">See pricing</a>
+      </div>
+      <p class="help__more"><a class="more" href="/demo">Contact us</a></p>
+    </div>
+
+    <div class="help__media">
+      <div class="help__stage">
+        <img src="/static/images/support.jpg" alt="A dispatch operations desk with route monitors" width="1000" height="700" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

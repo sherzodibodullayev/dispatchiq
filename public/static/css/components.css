@@ -1,0 +1,577 @@
+/* ===========================================================================
+   Ported components.
+
+   These are the 21st.dev components the founder asked for. Their source is
+   React + Framer Motion behind a login, and this site is Jinja + vanilla JS,
+   so each one is reimplemented here from its documented behaviour rather than
+   installed. Same effect, no React, no build step.
+
+     reveal-text            → .rt            (blur + stagger, per word)
+     animated-hero          → .rotw          (headline word cycles)
+     text-three             → .tw            (typewriter, cycling phrases)
+     spotlight-card         → .spot          (radial highlight follows cursor)
+     flip-button            → .flipbtn       (label rotates to a second label)
+     liquid-glass-button    → .btn--glass    (blurred glass + specular sheen)
+     glsl-hills             → .hills         (WebGL ridges; CSS fallback)
+     pricing                → .plans + .switch (monthly/annual, count, confetti)
+     faq1                   → .faq           (centred, animated accordion)
+     light-theme background → .bg-canvas     (tinted radials behind the page)
+
+   Motion here is decoration. Everything degrades to its finished state with
+   no JS, and stops under prefers-reduced-motion.
+   ========================================================================= */
+
+
+/* ---------------------------------------------------------------------------
+   light-theme background snippet — a tinted wash behind the whole document
+   ------------------------------------------------------------------------- */
+
+.bg-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  pointer-events: none;
+  background:
+    radial-gradient(62% 40% at 50% -4%,  rgba(31, 138, 76, .13), transparent 68%),
+    radial-gradient(44% 32% at 88% 12%,  rgba(14, 165, 233, .10), transparent 70%),
+    radial-gradient(48% 36% at 6% 26%,   rgba(99, 102, 241, .07), transparent 72%),
+    radial-gradient(70% 45% at 50% 105%, rgba(31, 138, 76, .07), transparent 70%),
+    var(--paper);
+}
+
+/* A dot grid over the wash, faded out where it would fight with text. Kept
+   at 1px on a 28px pitch — any denser and it moirés on a scaled display. */
+.bg-canvas::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(11, 18, 32, .055) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(75% 60% at 50% 40%, #000 0%, transparent 78%);
+  -webkit-mask-image: radial-gradient(75% 60% at 50% 40%, #000 0%, transparent 78%);
+}
+
+
+/* ---------------------------------------------------------------------------
+   reveal-text — blur-and-stagger, one word at a time
+   ------------------------------------------------------------------------- */
+
+.rt__w {
+  display: inline-block;
+  opacity: 0;
+  filter: blur(9px);
+  transform: translateY(14px);
+  transition:
+    opacity   .62s var(--ease),
+    filter    .62s var(--ease),
+    transform .62s var(--ease);
+  will-change: opacity, filter, transform;
+}
+.rt.is-in .rt__w {
+  opacity: 1;
+  filter: blur(0);
+  transform: none;
+}
+
+/* Until the splitter has run, the text is plain and fully visible — a failed
+   script must never leave a blank heading. */
+.rt:not(.is-split) .rt__w { opacity: 1; filter: none; transform: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .rt__w { opacity: 1 !important; filter: none !important; transform: none !important; }
+}
+
+
+/* ---------------------------------------------------------------------------
+   animated-hero — the noun in the headline cycles
+   ------------------------------------------------------------------------- */
+
+.rotw {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  vertical-align: bottom;
+  /* Width is animated to the next word's measured width, so the rest of the
+     line slides rather than jumping a character at a time. */
+  transition: width .42s var(--ease);
+  white-space: nowrap;
+
+  /* content-box plus a padded, negatively-margined tail. The JS sets `width`
+     to the measured word; this adds a sliver of clip box beyond it and then
+     pulls the following comma back over it, so the layout is unchanged but a
+     measurement that comes up a few pixels short — a font that swapped late,
+     a zoom, a hinting difference — still cannot lop the last letter off.
+     Belt; the ResizeObserver in components.js is braces. */
+  box-sizing: content-box;
+  padding-right: .16em;
+  margin-right: -.16em;
+}
+.rotw__w {
+  display: inline-block;
+  transition: transform .42s var(--ease), opacity .3s var(--ease), filter .42s var(--ease);
+  background: linear-gradient(92deg, var(--blue-ink) 12%, #0EA5E9 88%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.rotw__w.is-out { transform: translateY(-105%); opacity: 0; filter: blur(7px); }
+.rotw__w.is-in  { transform: translateY(105%);  opacity: 0; filter: blur(7px); }
+
+@media (prefers-reduced-motion: reduce) {
+  .rotw { transition: none; }
+  .rotw__w { transition: none; }
+}
+
+
+/* ---------------------------------------------------------------------------
+   text-three — typewriter with a blinking caret
+   ------------------------------------------------------------------------- */
+
+.tw { display: inline; }
+.tw__caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  margin-left: 2px;
+  vertical-align: -.14em;
+  background: var(--blue);
+  animation: tw-blink 1.05s steps(1) infinite;
+}
+@keyframes tw-blink { 50% { opacity: 0; } }
+
+@media (prefers-reduced-motion: reduce) {
+  .tw__caret { animation: none; opacity: .5; }
+}
+
+
+/* ---------------------------------------------------------------------------
+   spotlight-card — a radial highlight that tracks the cursor
+   ------------------------------------------------------------------------- */
+
+.spot {
+  position: relative;
+  isolation: isolate;
+  transition:
+    transform  .34s var(--ease),
+    box-shadow .34s var(--ease),
+    border-color .34s var(--ease);
+}
+
+/* The wash itself, under the content. */
+.spot::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(
+    260px circle at var(--mx, 50%) var(--my, 0%),
+    rgba(31, 138, 76, .13),
+    rgba(31, 138, 76, .04) 42%,
+    transparent 68%
+  );
+  opacity: 0;
+  transition: opacity .32s var(--ease);
+}
+
+/* And a rim light on the border, which is what stops it looking like a
+   smudge — the edge nearest the cursor brightens. */
+.spot::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  padding: 1px;
+  background: radial-gradient(
+    200px circle at var(--mx, 50%) var(--my, 0%),
+    rgba(31, 138, 76, .55),
+    transparent 62%
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity .32s var(--ease);
+}
+
+.spot:hover::before,
+.spot:focus-within::before { opacity: 1; }
+.spot:hover::after,
+.spot:focus-within::after  { opacity: 1; }
+
+/* The lift the founder asked for: the hovered card leaves the row. */
+.spot:hover,
+.spot:focus-within {
+  transform: translateY(-5px);
+  box-shadow: var(--lift-2);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spot, .spot:hover { transform: none; }
+}
+@media (hover: none) {
+  .spot:hover { transform: none; box-shadow: var(--lift-1); }
+  .spot::before, .spot::after { display: none; }
+}
+
+
+/* ---------------------------------------------------------------------------
+   flip-button — the label rotates away and a second one rotates in
+   ------------------------------------------------------------------------- */
+
+.flipbtn { overflow: hidden; perspective: 600px; }
+
+.flipbtn__t { display: grid; }
+.flipbtn__t > span {
+  grid-area: 1 / 1;
+  display: block;
+  transition: transform .42s var(--ease), opacity .3s var(--ease);
+  backface-visibility: hidden;
+}
+.flipbtn__t > span:nth-child(2) {
+  transform-origin: bottom center;
+  transform: rotateX(-92deg) translateY(72%);
+  opacity: 0;
+}
+.flipbtn:hover .flipbtn__t > span:nth-child(1),
+.flipbtn:focus-visible .flipbtn__t > span:nth-child(1) {
+  transform-origin: top center;
+  transform: rotateX(92deg) translateY(-72%);
+  opacity: 0;
+}
+.flipbtn:hover .flipbtn__t > span:nth-child(2),
+.flipbtn:focus-visible .flipbtn__t > span:nth-child(2) {
+  transform: none;
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flipbtn__t > span { transition: none; }
+  .flipbtn__t > span:nth-child(2) { display: none; }
+}
+
+
+/* ---------------------------------------------------------------------------
+   liquid-glass-button — for buttons sitting on the sky or the shader
+   ------------------------------------------------------------------------- */
+
+.btn--glass {
+  --btn-bg: transparent;
+  --btn-fg: var(--ink);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: rgba(255, 255, 255, .26);
+  border-color: rgba(255, 255, 255, .62);
+  backdrop-filter: blur(16px) saturate(185%);
+  -webkit-backdrop-filter: blur(16px) saturate(185%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .85),
+    inset 0 -10px 22px rgba(255, 255, 255, .22),
+    0 10px 30px rgba(11, 18, 32, .13);
+}
+
+/* The lens: a soft bright blob under the cursor, which is what sells the
+   "liquid" part. Falls back to a fixed centre highlight without JS. */
+.btn--glass::before {
+  content: "";
+  position: absolute;
+  inset: -40%;
+  z-index: -1;
+  background: radial-gradient(
+    closest-side circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 255, 255, .9),
+    rgba(255, 255, 255, 0) 70%
+  );
+  opacity: .55;
+  transition: opacity .3s var(--ease);
+}
+.btn--glass:hover::before { opacity: .95; }
+
+/* A specular streak that sweeps once on hover. */
+.btn--glass::after {
+  content: "";
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 42%;
+  left: -55%;
+  z-index: -1;
+  background: linear-gradient(100deg, transparent, rgba(255, 255, 255, .78), transparent);
+  transform: skewX(-18deg);
+  transition: left .62s var(--ease);
+}
+.btn--glass:hover::after { left: 115%; }
+
+.btn--glass:hover { background: rgba(255, 255, 255, .34); }
+
+/* Light-on-dark only where the ground behind really is dark. The closing
+   panel is NOT: its content sits over the shader's pale sky, so a white label
+   there disappears entirely. That panel keeps the default ink label. */
+.dark .btn--glass {
+  --btn-fg: #fff;
+  background: rgba(255, 255, 255, .14);
+  border-color: rgba(255, 255, 255, .34);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .42),
+    0 10px 30px rgba(0, 0, 0, .22);
+}
+.dark .btn--glass:hover { background: rgba(255, 255, 255, .22); }
+
+/* Over the shader the glass needs a touch more body than it does on the hero,
+   or the label floats on a wash with no button under it. */
+.hills-wrap .btn--glass {
+  background: rgba(255, 255, 255, .42);
+  border-color: rgba(255, 255, 255, .8);
+}
+.hills-wrap .btn--glass:hover { background: rgba(255, 255, 255, .55); }
+
+@media (prefers-reduced-motion: reduce) {
+  .btn--glass::after { display: none; }
+}
+
+
+/* ---------------------------------------------------------------------------
+   glsl-hills — animated ridges behind the closing panel
+   ------------------------------------------------------------------------- */
+
+.hills-wrap {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  /* The CSS fallback, visible whenever WebGL is missing or the canvas has not
+     painted yet. It is a still version of what the shader draws. */
+  background:
+    linear-gradient(180deg, #7FC0E8 0%, #A9D6F1 28%, #CFE7F8 52%, #E6F2FB 74%, #F4F9FD 100%);
+}
+
+.hills {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 0;
+  transition: opacity .9s var(--ease);
+}
+.hills.is-ready { opacity: 1; }
+
+
+/* ---------------------------------------------------------------------------
+   pricing — monthly/annual switch, counted figures, confetti
+   ------------------------------------------------------------------------- */
+
+.switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+  border-radius: 999px;
+  background: var(--soft);
+  border: 1px solid var(--line-soft);
+  position: relative;
+}
+.switch__btn {
+  position: relative;
+  z-index: 1;
+  border: 0;
+  background: transparent;
+  border-radius: 999px;
+  padding: 8px 18px;
+  font-size: .88rem;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color .24s var(--ease);
+  white-space: nowrap;
+}
+.switch__btn.is-on { color: #fff; }
+.switch__thumb {
+  position: absolute;
+  top: 4px;
+  bottom: 4px;
+  border-radius: 999px;
+  background: var(--ink);
+  transition: transform .34s var(--ease), width .34s var(--ease);
+  z-index: 0;
+}
+
+.switch__note {
+  display: block;
+  margin-top: 10px;
+  font-size: .8rem;
+  color: var(--muted-2);
+}
+
+/* The counted figure. Tabular numerals keep the row from twitching as the
+   digits run. */
+.plan__fig, .plan__fig b { font-variant-numeric: tabular-nums; }
+
+.confetti {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 300;
+  overflow: hidden;
+}
+.confetti i {
+  position: absolute;
+  width: 8px;
+  height: 14px;
+  border-radius: 2px;
+  opacity: 0;
+  animation: confetti-fall var(--dur, 1400ms) cubic-bezier(.25, .8, .45, 1) forwards;
+}
+@keyframes confetti-fall {
+  0%   { opacity: 1; transform: translate3d(0, 0, 0) rotate(0deg); }
+  100% { opacity: 0; transform: translate3d(var(--dx, 0), var(--dy, 320px), 0) rotate(var(--rot, 540deg)); }
+}
+
+
+/* ---------------------------------------------------------------------------
+   faq1 — centred accordion with an animated panel
+   ------------------------------------------------------------------------- */
+
+.faq details {
+  border: 1px solid var(--line-soft);
+  border-radius: 14px;
+  background: var(--card);
+  margin-bottom: 10px;
+  overflow: hidden;
+  transition: border-color .24s var(--ease), box-shadow .24s var(--ease);
+}
+.faq details[open] { border-color: rgba(31, 138, 76, .26); box-shadow: var(--lift-1); }
+.faq details:hover { border-color: var(--line); }
+
+.faq summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 17px 52px 17px 20px;
+  font-size: .98rem;
+  font-weight: 500;
+  letter-spacing: -.015em;
+  position: relative;
+  color: var(--ink);
+}
+.faq summary::-webkit-details-marker { display: none; }
+
+/* A plus that becomes a minus, rather than a rotating chevron — it reads as
+   "there is more here" at a glance. */
+.faq summary::before,
+.faq summary::after {
+  content: "";
+  position: absolute;
+  right: 21px;
+  top: 50%;
+  background: var(--muted-2);
+  border-radius: 2px;
+  transition: transform .3s var(--ease), background .3s var(--ease);
+}
+.faq summary::before { width: 13px; height: 1.6px; transform: translateY(-50%); }
+.faq summary::after  { width: 1.6px; height: 13px; right: 27px; transform: translateY(-50%); }
+.faq details[open] summary::before { background: var(--blue); }
+.faq details[open] summary::after  { background: var(--blue); transform: translateY(-50%) rotate(90deg); opacity: 0; }
+
+/* 0fr → 1fr animates natively; the inner wrapper does the clipping. */
+.faq__a {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .32s var(--ease);
+}
+.faq details[open] .faq__a { grid-template-rows: 1fr; }
+.faq__a > div { overflow: hidden; min-height: 0; }
+.faq__a p {
+  color: var(--muted);
+  font-size: .93rem;
+  line-height: 1.68;
+  padding: 0 52px 19px 20px;
+  max-width: 68ch;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .faq__a { transition: none; }
+}
+
+
+/* ---------------------------------------------------------------------------
+   the hero frame's scripted sequence
+   ------------------------------------------------------------------------- */
+
+/* Hidden only once we know a script is running and motion is welcome — with
+   no JS the frame is simply the finished conversation. */
+html.js .frame[data-seq] .seq {
+  opacity: 0;
+  transform: translateY(9px);
+}
+html.js .frame[data-seq] .seq.is-on {
+  opacity: 1;
+  transform: none;
+  transition: opacity .34s var(--ease), transform .34s var(--ease);
+}
+
+/* The bubble being typed shows a caret until it finishes. */
+.bub.is-typing::after {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  height: .88em;
+  margin-left: 2px;
+  vertical-align: -.1em;
+  background: currentColor;
+  opacity: .7;
+  animation: tw-blink 1.05s steps(1) infinite;
+}
+
+/* A field the workflow engine is writing right now. */
+.lead__row.is-live b { color: var(--blue-ink); }
+.lead__row.is-live { background: rgba(31, 138, 76, .05); }
+
+/* The whole sequence is decoration over content that is already there. */
+@media (prefers-reduced-motion: reduce) {
+  html.js .frame[data-seq] .seq { opacity: 1 !important; transform: none !important; }
+  .bub.is-typing::after { display: none; }
+}
+
+
+/* ===========================================================================
+   Phones and tablets
+   ========================================================================= */
+
+@media (max-width: 900px) {
+  /* The switch and its caveat both need the full column, and the caveat is
+     the part nobody should have to hunt for. */
+  .switch { width: 100%; }
+  .switch__btn { flex: 1; padding: 10px 12px; }
+  .switch__note { max-width: 46ch; margin-inline: auto; }
+
+  .faq summary { padding: 15px 46px 15px 16px; font-size: .94rem; }
+  .faq summary::before { right: 18px; }
+  .faq summary::after { right: 24px; }
+  .faq__a p { padding: 0 20px 17px 16px; font-size: .9rem; }
+}
+
+@media (max-width: 720px) {
+  /* Confetti from a switch at the top of a phone screen mostly lands off the
+     bottom; fewer, shorter throws read better than a wasted burst. */
+  .confetti i { width: 6px; height: 11px; }
+
+  /* The hero's rotating noun must be free to sit on its own line rather than
+     forcing a very long first line. */
+  .rotw { white-space: normal; }
+}
+
+/* A phone browser that has quietly disabled backdrop-filter (older Android
+   WebView, low-power mode) would otherwise render the glass buttons as a
+   near-invisible white wash on a pale sky. */
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .btn--glass { background: rgba(255, 255, 255, .86); }
+  .hills-wrap .btn--glass { background: rgba(255, 255, 255, .9); }
+  .dark .btn--glass { background: rgba(12, 22, 42, .72); }
+}

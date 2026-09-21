@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}{{ company.name }} — {{ company.tagline }}{% endblock %}</title>
+<meta name="description" content="{% block description %}DispatchIQ is a planned AI Truck Dispatch Assistant for U.S. owner-operators and small fleets — load matching, document intelligence, a natural-language dispatcher copilot, and human approval on every decision that matters.{% endblock %}">
+<meta name="theme-color" content="#0E5C3F">
+
+<link rel="canonical" href="{{ site_url }}{{ request.url.path }}">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ self.title() }}">
+<meta property="og:description" content="{{ self.description() }}">
+<meta property="og:image" content="{{ site_url }}/static/images/hero-2.jpg">
+<meta property="og:url" content="{{ site_url }}{{ request.url.path }}">
+<meta name="twitter:card" content="summary_large_image">
+
+<link rel="icon" type="image/svg+xml" href="/static/images/mark.svg">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/static/css/site.css?v={{ v }}">
+<link rel="stylesheet" href="/static/css/components.css?v={{ v }}">
+<link rel="stylesheet" href="/static/css/chat.css?v={{ v }}">
+
+<!-- Before first paint, not on DOMContentLoaded: components.css only hides
+     the animated pieces once this class exists, so a reader with scripting
+     off never sees a half-built page, and a reader with it on never sees the
+     finished frame flash before the animation starts. -->
+<script>document.documentElement.className += ' js';</script>
+{% block head %}{% endblock %}
+</head>
+<body class="page-{{ active|default('other') }}">
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="masthead" id="masthead">
+  <div class="shell masthead__inner">
+    <a class="wordmark" href="/" aria-label="{{ company.name }} home">
+      <img class="wordmark__mark" src="/static/images/mark.svg" alt="" width="34" height="34">
+      <span class="wordmark__text">
+        <span class="wordmark__primary">DispatchIQ</span>
+        <span class="wordmark__secondary">AI Dispatch Assistant</span>
+      </span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="/platform"{% if active == 'platform' %} aria-current="page"{% endif %}>Platform</a>
+      <a href="/carriers"{% if active == 'carriers' %} aria-current="page"{% endif %}>Who It's For</a>
+      <a href="/#capabilities"{% if active == 'home' %} data-scroll{% endif %}>Capabilities</a>
+      <a href="/pricing"{% if active == 'pricing' %} aria-current="page"{% endif %}>Pricing</a>
+      <a href="/company"{% if active == 'company' %} aria-current="page"{% endif %}>Company</a>
+      <a href="/demo"{% if active == 'demo' %} aria-current="page"{% endif %}>Contact</a>
+      <!-- Shown only once the bar is too narrow to carry the CTA itself. -->
+      <span class="nav__cta"><a class="btn btn--sm btn--solid" href="/demo#pilot">Join the pilot</a></span>
+    </nav>
+
+    <div class="masthead__actions">
+      <button class="iconlink" id="searchjump" type="button" aria-label="Find a capability">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="7"/><path d="M20 20l-3.6-3.6"/>
+        </svg>
+      </button>
+      <a class="masthead__quiet" href="/demo">Talk to the copilot</a>
+      <a class="btn btn--sm btn--ghost" href="/demo#pilot">Join the pilot</a>
+      <button class="navtoggle" id="navtoggle" aria-expanded="false" aria-controls="nav" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+{% block content %}{% endblock %}
+</main>
+
+<footer class="footer">
+  <div class="shell">
+
+    <div class="footer__top">
+      <div class="footer__brandcol">
+        <span class="wordmark">
+          <img class="wordmark__mark" src="/static/images/mark.svg" alt="" width="34" height="34">
+          <span class="wordmark__text">
+            <span class="wordmark__primary">DispatchIQ</span>
+            <span class="wordmark__secondary">AI Dispatch Assistant</span>
+          </span>
+        </span>
+        <p class="footer__blurb">
+          DispatchIQ is a planned artificial-intelligence assistant for U.S. truck dispatch
+          operations — built for owner-operators and small fleets first, with human approval on
+          every decision that carries operational risk.
+        </p>
+
+        <div class="footer__social">
+          <a href="{{ company.linkedin }}" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 11-.02 5 2.5 2.5 0 01.02-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.76V21h-4v-5.6c0-1.34-.03-3.07-1.9-3.07-1.9 0-2.2 1.46-2.2 2.97V21H9z"/></svg>
+          </a>
+          <a href="mailto:{{ company.email }}" aria-label="Email">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5L12 13l8.5-6.5"/>
+            </svg>
+          </a>
+        </div>
+
+        <form class="signup" id="signup">
+          <h3>Follow the build</h3>
+          <p>
+            Monthly notes on what shipped, what the pilot fleets found, and when the next pilot
+            slots open. No sales sequence.
+          </p>
+          <p class="signup__req">* indicates required fields</p>
+
+          <label for="nl-email">Email *</label>
+          <input type="email" id="nl-email" name="email" placeholder="you@yourcarrier.com" required>
+
+          <label for="nl-fleet">Fleet size *</label>
+          <select id="nl-fleet" name="fleet" required>
+            <option value="">Please choose an option</option>
+            <option>Owner-operator (1 truck)</option>
+            <option>2–6 power units</option>
+            <option>7–20 power units</option>
+            <option>21–75 power units</option>
+            <option>75+ power units</option>
+            <option>Broker / 3PL</option>
+          </select>
+
+          <div class="signup__radios">
+            <label><input type="radio" name="role" value="carrier" checked> Carrier</label>
+            <label><input type="radio" name="role" value="dispatcher"> Dispatcher</label>
+          </div>
+
+          <p class="signup__consent">
+            By submitting this form you consent to receive product updates from DispatchIQ. You can
+            withdraw consent at any time using the unsubscribe link in any email.
+          </p>
+
+          <button class="btn btn--sm btn--white" type="submit">Sign up</button>
+          <p class="signup__ok" id="signup-ok" hidden role="status"></p>
+        </form>
+      </div>
+
+      <div class="footer__col">
+        <h2 class="mono footer__head">Platform</h2>
+        <a href="/platform#dashboard">Dispatcher dashboard</a>
+        <a href="/platform#copilot">AI dispatch copilot</a>
+        <a href="/platform#matching">Load matching</a>
+        <a href="/platform#documents">Document intelligence</a>
+        <a href="/platform#comms">Communication assistant</a>
+        <a href="/platform#monitoring">Dispatch monitoring</a>
+        <a href="/platform#voice">Voice AI <span style="opacity:.6">(planned)</span></a>
+      </div>
+
+      <div class="footer__col">
+        <h2 class="mono footer__head">Who it's for</h2>
+        <a href="/carriers#owner-operators">Owner-operators</a>
+        <a href="/carriers#small-fleets">Small fleets</a>
+        <a href="/carriers#mid-market">Mid-sized carriers</a>
+        <a href="/carriers#enterprise">Enterprise carriers</a>
+        <a href="/carriers#brokers">Brokers &amp; 3PLs</a>
+      </div>
+
+      <div class="footer__col">
+        <h2 class="mono footer__head">Integrations</h2>
+        <span>ELD systems</span>
+        <span>TMS platforms</span>
+        <span>Load boards</span>
+        <span>Mapping services</span>
+        <span>Email &amp; SMS</span>
+        <span>Accounting systems</span>
+      </div>
+
+      <div class="footer__col">
+        <h2 class="mono footer__head">Company</h2>
+        <a href="/company">About DispatchIQ</a>
+        <a href="/company#founder">Founder</a>
+        <a href="/company#roadmap">Five-year roadmap</a>
+        <a href="/company#significance">U.S. market impact</a>
+        <a href="/pricing">Pricing</a>
+        <a href="/demo">Contact</a>
+        <a href="mailto:{{ company.email }}">{{ company.email }}</a>
+      </div>
+    </div>
+
+    <div class="footer__badges">
+      <span class="badge">Integrates with<br>FMCSA-registered ELDs</span>
+      <span class="badge">Human-in-the-loop<br>by design</span>
+      <span class="badge">Role-based access<br>&amp; audit logging</span>
+      <span class="badge">Encryption<br>in transit &amp; at rest</span>
+      <span class="badge">Model-provider<br>independent</span>
+      <span class="badge">U.S. market<br>focus</span>
+    </div>
+
+    <p class="footer__disclaimer">
+      DispatchIQ is at the planning and pre-development stage. No U.S. entity has been formed and no
+      company name has been selected; "DispatchIQ" is a working product name. There is no shipped
+      software, no paying customers and no revenue as of this writing, and nothing on this site
+      should be read as a claim otherwise. Prices shown are illustrative planning assumptions from
+      the company's five-year business plan, to be validated through market testing — not quoted
+      prices. Capabilities described are planned, not delivered; Voice AI in particular is on the
+      roadmap and is not built. <b>DispatchIQ is not an electronic logging device and is not a
+      substitute for one.</b> FMCSA requires ELDs to meet its technical standards and to be
+      certified and registered; the platform is designed to integrate with compliant ELD and
+      fleet-management systems, not to replace them. Nothing here is legal, tax, insurance or
+      regulatory advice. Market figures are attributed to the agencies and analyst firms that
+      published them; estimates for this category vary substantially by methodology, which is why a
+      range is shown rather than a single number. The assistant on this site is an AI, not a person,
+      and it will say so.
+    </p>
+
+    <div class="footer__base">
+      <span>&copy; {{ year }} {{ company.name }}. All rights reserved.</span>
+      <nav aria-label="Legal">
+        <a href="/terms">Terms of Use</a>
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/company">Business plan summary</a>
+      </nav>
+      <span>Founded by {{ founder.name }} &middot; {{ company.market }}</span>
+    </div>
+  </div>
+</footer>
+
+{% if active != 'demo' %}
+<!-- Floating assistant. The panel carries the same element ids the /demo page
+     uses, so chat.js drives both without a second client. -->
+<button class="chatfab" id="chatfab" type="button" aria-expanded="false" aria-controls="chatpanel"
+        aria-label="Open the DispatchIQ copilot">
+  <span class="chatfab__ping" aria-hidden="true"></span>
+  <svg class="chatfab__icon" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.9"
+       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <rect x="5" y="7" width="22" height="17" rx="5"/>
+    <path d="M11 13.5h10M11 18h6"/>
+    <path d="M12 24l-3 4v-4"/>
+  </svg>
+  <svg class="chatfab__close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+       stroke-linecap="round" aria-hidden="true">
+    <path d="M6 6l12 12M18 6L6 18"/>
+  </svg>
+</button>
+
+<div class="chatpanel" id="chatpanel" role="dialog" aria-modal="false" aria-label="DispatchIQ copilot" hidden>
+
+  <div class="chatpanel__head">
+    <span class="chatpanel__avatar" aria-hidden="true">
+      <img src="/static/images/mark.svg" alt="" width="30" height="30">
+    </span>
+    <div class="chatpanel__id">
+      <b>DispatchIQ Copilot</b>
+      <span><i></i> AI assistant &middot; replies instantly</span>
+    </div>
+    <button class="chatpanel__x" id="chatclose" type="button" aria-label="Close the copilot">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M6 6l12 12M18 6L6 18"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="chatpanel__body">
+    <div class="thread" id="thread" role="log" aria-live="polite" aria-label="Conversation">
+      <div class="msg msg--ai msg--intro">
+        <span class="msg__who" aria-hidden="true">D</span>
+        <div class="msg__body">
+          <p>
+            Hi — I'm the DispatchIQ Copilot, an AI assistant rather than a person. DispatchIQ is
+            still at the planning stage, so I'll tell you what's designed and what isn't built yet.
+          </p>
+          <p>How many trucks are you running?</p>
+        </div>
+      </div>
+
+      <!-- Inside the thread, not below it: one scrolling column means the
+           starter cards can never squeeze the conversation into a sliver. -->
+      <div class="chips chips--panel" id="chips">
+        <button class="chip" data-q="I run 6 trucks and dispatch them myself between driving. Most of my evening goes on rate cons and chasing brokers for appointment times. What would DispatchIQ actually change for me?">
+          <b>Would this work for my fleet?</b>
+          <span>Tell it how you run and see.</span>
+        </button>
+        <button class="chip" data-q="What does DispatchIQ cost, and what am I paying for on top of the monthly fee?">
+          <b>What does it cost?</b>
+          <span>Subscription plus usage, explained.</span>
+        </button>
+        <button class="chip" data-q="Does this replace my ELD, and how does it stay on the right side of FMCSA hours-of-service rules?">
+          <b>How does it handle compliance?</b>
+          <span>Where it defers to certified systems.</span>
+        </button>
+        <button class="chip" data-q="Does the AI book loads on its own? I'm not handing rate negotiation to a machine.">
+          <b>Does it book loads by itself?</b>
+          <span>Human-in-the-loop, and why.</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="composer">
+    <form class="composer__form" id="composer">
+      <label class="visually-hidden" for="input">Your message</label>
+      <textarea id="input" rows="1" placeholder="Ask about your own operation…" required></textarea>
+
+      <div class="composer__actions">
+        <button type="button" class="icon-btn" id="mic" aria-label="Record a message">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <rect x="9" y="3" width="6" height="11" rx="3"/>
+            <path d="M5 11a7 7 0 0 0 14 0"/><path d="M12 18v3"/>
+          </svg>
+        </button>
+        <button type="submit" class="btn btn--sm" id="send">Send</button>
+      </div>
+    </form>
+
+    <div class="composer__status">
+      <span class="mono" id="status-text"></span>
+      <button class="chatpanel__reset" id="reset" type="button">Clear</button>
+    </div>
+
+    <div class="langs langs--panel" id="langs" role="group" aria-label="Answer language">
+      <button class="lang is-active" data-lang="en">English</button>
+      <button class="lang" data-lang="es">Espa&ntilde;ol</button>
+      <button class="lang" data-lang="uz">O&#699;zbek</button>
+    </div>
+  </div>
+</div>
+{% endif %}
+
+<script src="/static/js/site.js?v={{ v }}" defer></script>
+<script src="/static/js/components.js?v={{ v }}" defer></script>
+{% if active != 'demo' %}<script src="/static/js/chat.js?v={{ v }}" defer></script>{% endif %}
+{% block scripts %}{% endblock %}
+</body>
+</html>

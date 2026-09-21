@@ -1,0 +1,5 @@
+# Local development and any host that runs its own server process.
+# Install with:  pip install -r requirements.txt -r requirements-dev.txt
+
+uvicorn[standard]>=0.27        # the local server; brings uvloop + httptools
+pytest>=8.0

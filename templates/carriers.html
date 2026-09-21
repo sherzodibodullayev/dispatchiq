@@ -1,0 +1,262 @@
+{% extends "base.html" %}
+
+{% block title %}Who it's for — {{ company.name }}{% endblock %}
+{% block description %}DispatchIQ is built first for owner-operators and small fleets, then mid-market and enterprise carriers, with brokers and 3PLs as a later expansion. What each segment needs and where the product sits.{% endblock %}
+
+{% block content %}
+
+<section class="phero">
+  <div class="shell">
+    <span class="mono">Who it's for</span>
+    <h1 class="rt">Built for the 92%, not retrofitted down from enterprise</h1>
+    <p>
+      Roughly 1.5 million U.S. carriers run between one and twenty power units. They are the
+      backbone of national freight capacity and the segment least able to carry an enterprise TMS
+      licence or a full-time dispatch payroll. That is where this starts.
+    </p>
+  </div>
+</section>
+
+<section class="sec sec--tight">
+  <div class="shell">
+    <h2 class="sec__title sec__title--left">Market segmentation</h2>
+    <p style="color:var(--muted); margin-top:10px">Section 13 of the business plan.</p>
+
+    <div class="rail2">
+      <div class="rail2__row">
+        <div class="rail2__when">Owner-Operator</div>
+        <div class="rail2__what">
+          <h3>Administrative assistance</h3>
+          <p>Product position: AI Dispatch Assistant.</p>
+        </div>
+      </div>
+      <div class="rail2__row">
+        <div class="rail2__when">Small Fleet</div>
+        <div class="rail2__what">
+          <h3>Dispatcher productivity</h3>
+          <p>Product position: AI Dispatch Platform.</p>
+        </div>
+      </div>
+      <div class="rail2__row">
+        <div class="rail2__when">Mid-Market Carrier</div>
+        <div class="rail2__what">
+          <h3>Workflow automation</h3>
+          <p>Product position: AI Operations Platform.</p>
+        </div>
+      </div>
+      <div class="rail2__row">
+        <div class="rail2__when">Enterprise Carrier</div>
+        <div class="rail2__what">
+          <h3>Integration &amp; automation</h3>
+          <p>Product position: Enterprise AI Dispatch.</p>
+        </div>
+      </div>
+      <div class="rail2__row">
+        <div class="rail2__when">Broker / 3PL</div>
+        <div class="rail2__what">
+          <h3>Communication &amp; workflow</h3>
+          <p>Product position: future expansion.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      Commercialization starts with owner-operators and small fleets because their purchasing
+      cycles are generally shorter than a large enterprise transportation organization's &mdash;
+      not because the enterprise segment is less valuable.
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--band" id="owner-operators">
+  <div class="shell">
+    <div class="grid2">
+      <div class="prose">
+        <span class="mono" style="color:var(--green)">Section 12.1</span>
+        <h2 style="margin-top:10px">Owner-operators</h2>
+        <p>
+          You drive, you dispatch, and you run the business, often in that order and often in the
+          same day. Administrative capacity is whatever is left after the driving hours are done.
+        </p>
+        <p>
+          DispatchIQ is positioned as a lower-cost alternative to hiring administrative help you
+          cannot justify at one or two trucks — not as a replacement for judgment you are the only
+          person qualified to apply.
+        </p>
+      </div>
+      <div class="tile">
+        <span class="mono">What comes off the evening</span>
+        <ul>
+          <li>Rate confirmations read instead of retyped</li>
+          <li>Loads collected and shortlisted in one place</li>
+          <li>Broker and shipper messages drafted for approval</li>
+          <li>Appointment and deadline reminders</li>
+          <li>Questions answered without opening four applications</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="small-fleets">
+  <div class="shell">
+    <div class="grid2">
+      <div class="prose">
+        <span class="mono" style="color:var(--green)">Section 12.2</span>
+        <h2 style="margin-top:10px">Small fleets</h2>
+        <p>
+          The plan's initial core market: trucking companies running several trucks, usually with
+          one or two dispatchers covering all of them. The BLS records 38,150 dispatchers employed
+          in truck transportation at a mean annual wage of $54,010, and 2026 cost benchmarking puts
+          the fully loaded cost — salary, benefits, overhead — at roughly $56,000 to $91,000 a year.
+        </p>
+        <p>
+          A large fleet spreads that across hundreds of trucks. You spread it across six. The goal
+          here is more trucks covered per dispatcher, which is a different objective from fewer
+          dispatchers, and the plan is explicit about that distinction.
+        </p>
+      </div>
+      <div class="tile">
+        <span class="mono">Stated benefits</span>
+        <ul>
+          <li>Dispatcher productivity</li>
+          <li>Centralized information</li>
+          <li>Reduced administrative workload</li>
+          <li>Improved communication</li>
+          <li>Better operational visibility</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--band" id="mid-market">
+  <div class="shell">
+    <div class="grid2">
+      <div class="prose">
+        <span class="mono" style="color:var(--green)">Section 12.3</span>
+        <h2 style="margin-top:10px">Mid-sized carriers</h2>
+        <p>
+          As the platform matures it is planned to support larger fleets: multiple dispatchers,
+          multiple terminals, more complex operations, greater load volume and enterprise
+          integrations. That is Years 3&ndash;4 work in the roadmap, not initial product.
+        </p>
+      </div>
+      <div class="tile" id="enterprise">
+        <span class="mono">Enterprise readiness — Months 19–24</span>
+        <ul>
+          <li>Enterprise accounts</li>
+          <li>Stronger security controls</li>
+          <li>Advanced integrations</li>
+          <li>Multi-user administration</li>
+          <li>Partner programs</li>
+          <li>Automated customer onboarding</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="brokers">
+  <div class="shell">
+    <div class="prose" style="max-width:820px">
+      <span class="mono" style="color:var(--green)">Section 12.4</span>
+      <h2 style="margin-top:10px">Freight brokerages and 3PLs</h2>
+      <p>
+        A later version may expand into freight brokerages, third-party logistics providers, fleet
+        management companies and transportation-management organizations.
+      </p>
+      <p>
+        The plan is deliberate about not chasing this early: <em>the initial product should remain
+        focused rather than attempting to solve every logistics problem simultaneously.</em> If you
+        are a broker reading this, the honest answer is that you are not the first customer and the
+        product will not be shaped around you in year one.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--wash">
+  <div class="shell">
+    <h2 class="sec__title rt">The competitive landscape, as published</h2>
+    <p class="sec__lede">
+      Section 14.1. The category is early but no longer empty, and pretending otherwise would be
+      the first thing a buyer checks.
+    </p>
+
+    <div class="rail2" style="margin-top:30px">
+      <div class="rail2__row">
+        <div class="rail2__when">Numeo</div>
+        <div class="rail2__what">
+          <h3>Free tier; $99/mo Starter</h3>
+          <p>Chrome-extension AI layered on the DAT load board; automated broker calling and rate negotiation.</p>
+        </div>
+      </div>
+      <div class="rail2__row">
+        <div class="rail2__when">TruckSmarter</div>
+        <div class="rail2__what">
+          <h3>$49/mo</h3>
+          <p>Mobile-first AI load sourcing aimed at owner-operators.</p>
+        </div>
+      </div>
+      <div class="rail2__row">
+        <div class="rail2__when">DispatchMVP</div>
+        <div class="rail2__what">
+          <h3>$49–$499/mo</h3>
+          <p>Voice-controlled TMS with an AI dispatch agent.</p>
+        </div>
+      </div>
+      <div class="rail2__row">
+        <div class="rail2__when">Datatruck</div>
+        <div class="rail2__what">
+          <h3>$100+/mo</h3>
+          <p>Full TMS with AI agents for dispatch and document processing.</p>
+        </div>
+      </div>
+      <div class="rail2__row">
+        <div class="rail2__when">Truckbase</div>
+        <div class="rail2__what">
+          <h3>$290/mo</h3>
+          <p>Traditional TMS — dispatch, invoicing, driver settlements, 30+ ELD integrations; no AI dispatch automation.</p>
+        </div>
+      </div>
+      <div class="rail2__row">
+        <div class="rail2__when">Vooma · HappyRobot.ai</div>
+        <div class="rail2__what">
+          <h3>Enterprise, pricing not published</h3>
+          <p>AI orchestration and capacity matching aimed at freight brokers, shippers and larger carriers.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <b>The positioning gap (Section 14.2).</b> Numeo and TruckSmarter concentrate on load-finding
+      and broker communication. DispatchMVP and Datatruck bundle AI into a full TMS aimed at fleets
+      already shopping for a system replacement. Vooma and HappyRobot.ai are oriented toward brokers
+      and larger carriers. Few products combine a dispatcher-facing natural-language copilot,
+      document intelligence and explicit human-approval governance in one tool built first for the
+      owner-operator and small-fleet segment. Samsara, Motive, DAT and Truckstop.com remain the data
+      layer all of these — including DispatchIQ — integrate with rather than replace.
+    </div>
+  </div>
+</section>
+
+<section class="help">
+  <div class="shell help__inner">
+    <div class="help__copy">
+      <h2>Not sure which one you are?</h2>
+      <p>Tell the copilot how many trucks you run and who dispatches them. It will say plainly whether you are the first customer or a later one.</p>
+      <div class="help__cta">
+        <a class="btn btn--ghost" href="/demo" data-agent>Talk to the copilot</a>
+        <a class="btn btn--ghost" href="/demo#pilot">Join the pilot</a>
+      </div>
+    </div>
+    <div class="help__media">
+      <div class="help__stage">
+        <img src="/static/images/who-we-serve.jpg" alt="A tractor-trailer on a highway lane" width="1000" height="700" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

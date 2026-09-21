@@ -1,0 +1,222 @@
+{% extends "base.html" %}
+
+{% block title %}Pricing — {{ company.name }}{% endblock %}
+{% block description %}DispatchIQ's illustrative pricing: $99–$199/mo for owner-operators, $299–$699 for small fleets, $750–$1,500 professional, $2,000+ enterprise, plus usage. These are published planning assumptions, not quoted prices.{% endblock %}
+
+{% block content %}
+
+<section class="phero">
+  <div class="shell">
+    <span class="mono">Pricing</span>
+    <h1 class="rt">Planning assumptions, published as such</h1>
+    <p>
+      Section 18 of the business plan sets out this pricing and says plainly that it is a planning
+      assumption to be validated through market testing. Nothing below has been sold to anyone at
+      any price. Treat it as the shape of the model, not a quote.
+    </p>
+  </div>
+</section>
+
+<section class="sec sec--tight">
+  <div class="shell">
+    <div class="plans">
+      <div class="plan">
+        <p class="plan__tag">Owner-Operator</p>
+        <h3>Solo</h3>
+        <p class="plan__fig">${{ company.price_oo_low }}&ndash;{{ company.price_oo_high }} <span>/ mo</span></p>
+        <p class="plan__for">One truck, and the person driving it is also the dispatcher.</p>
+        <ul>
+          <li>AI dispatch assistant</li>
+          <li>Basic load organization</li>
+          <li>Document processing</li>
+          <li>Dispatch dashboard</li>
+        </ul>
+        <a class="btn btn--ghost btn--sm" href="/demo#pilot">Ask about the pilot</a>
+      </div>
+
+      <div class="plan is-featured">
+        <p class="plan__tag">Small Fleet &middot; initial core market</p>
+        <h3>Fleet</h3>
+        <p class="plan__fig">${{ company.price_fleet_low }}&ndash;{{ company.price_fleet_high }} <span>/ mo</span></p>
+        <p class="plan__for">Several trucks, one or two dispatchers covering all of them.</p>
+        <ul>
+          <li>Everything in Solo</li>
+          <li>Multiple users</li>
+          <li>Advanced automation</li>
+          <li>Integrations</li>
+          <li>AI communications</li>
+          <li>Analytics</li>
+        </ul>
+        <a class="btn btn--solid btn--sm" href="/demo#pilot">Ask about the pilot</a>
+      </div>
+
+      <div class="plan">
+        <p class="plan__tag">Professional Fleet</p>
+        <h3>Professional</h3>
+        <p class="plan__fig">${{ company.price_pro_low }}&ndash;{{ company.price_pro_high }} <span>/ mo</span></p>
+        <p class="plan__for">Multiple dispatchers, higher load volume, more moving parts.</p>
+        <ul>
+          <li>Everything in Fleet</li>
+          <li>Multi-dispatcher workflows</li>
+          <li>Deeper ELD and TMS integration</li>
+          <li>Advanced reporting</li>
+        </ul>
+        <a class="btn btn--ghost btn--sm" href="/demo">Start a conversation</a>
+      </div>
+
+      <div class="plan">
+        <p class="plan__tag">Enterprise</p>
+        <h3>Enterprise</h3>
+        <p class="plan__fig">${{ company.price_ent_from }}+ <span>/ mo</span></p>
+        <p class="plan__for">Larger carriers, multiple terminals, procurement involved.</p>
+        <ul>
+          <li>Advanced integrations</li>
+          <li>Custom workflows</li>
+          <li>Administrative controls</li>
+          <li>Dedicated support</li>
+          <li>Enterprise security</li>
+        </ul>
+        <a class="btn btn--ghost btn--sm" href="/demo">Start a conversation</a>
+      </div>
+    </div>
+
+    <div class="note">
+      <b>Usage sits on top of the subscription.</b> Additional usage-based charges may apply to AI
+      conversations, voice minutes, document processing, advanced automation and API usage. This is
+      deliberate rather than sloppy: AI inference, voice and document processing cost more as they
+      are used, and gross margin is one of the metrics the plan watches most closely (Section 26).
+      A flat fee hides that cost in the price a light user pays.
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--band">
+  <div class="shell">
+    <h2 class="sec__title rt">What the price is measured against</h2>
+    <p class="sec__lede">
+      Not against other software. Against the fixed cost of the desk it assists.
+    </p>
+
+    <div class="stats">
+      <div class="stat">
+        <b>$54,010</b>
+        <span>mean annual wage, dispatchers in truck transportation</span>
+        <em>BLS OEWS, most recent published data</em>
+      </div>
+      <div class="stat">
+        <b>$56K–$91K</b>
+        <span>fully loaded annual cost of a human dispatcher</span>
+        <em>2026 industry cost benchmarking</em>
+      </div>
+      <div class="stat">
+        <b>38,150</b>
+        <span>dispatchers employed in truck transportation</span>
+        <em>BLS OEWS</em>
+      </div>
+      <div class="stat">
+        <b>92%</b>
+        <span>of carriers run ten trucks or fewer</span>
+        <em>2026 ATA-sourced industry reporting</em>
+      </div>
+    </div>
+
+    <div class="note">
+      <b>One deliberate choice about the model.</b> The plan warns against pricing purely by truck
+      count, because a customer with high operational complexity and few trucks ends up underpriced
+      relative to what they cost to serve. Expect complexity to carry weight alongside fleet size.
+    </div>
+  </div>
+</section>
+
+<section class="sec">
+  <div class="shell">
+    <h2 class="sec__title rt">Honest comparison</h2>
+    <p class="sec__lede">Published starting prices for the named entrants, as listed in 2026.</p>
+
+    <div class="grid3" style="margin-top:32px">
+      <div class="tile spot">
+        <span class="mono">TruckSmarter · $49/mo</span>
+        <p>Mobile-first AI load sourcing for owner-operators. Cheaper than DispatchIQ's planned
+          Solo tier and narrower in scope.</p>
+      </div>
+      <div class="tile spot">
+        <span class="mono">Numeo · free / $99 Starter</span>
+        <p>Chrome extension on the DAT board with automated broker calling and rate negotiation.
+          Note that automation includes negotiation, which DispatchIQ deliberately does not.</p>
+      </div>
+      <div class="tile spot">
+        <span class="mono">Truckbase · $290/mo</span>
+        <p>Traditional TMS with 30+ ELD integrations and no AI dispatch automation. A different
+          purchase: system replacement rather than an assistant layer.</p>
+      </div>
+    </div>
+
+    <div class="note">
+      If price is the only axis you are comparing on, some of these are cheaper today and they
+      exist today, which DispatchIQ does not. The copilot in the corner will tell you the same
+      thing if you ask it.
+    </div>
+  </div>
+</section>
+
+<section class="sec sec--wash">
+  <div class="shell">
+    <h2 class="sec__title rt">Common questions about the money</h2>
+
+    <div class="faq" style="margin-top:28px">
+      <details open>
+        <summary>Can I get this price locked in?</summary>
+        <div class="faq__a"><div><p>
+          No. There is no product to sell and no contract to sign. These are published planning
+          figures. A pilot conversation may well end with pricing that looks different once real
+          usage has been measured, and pretending otherwise now would be the first broken promise.
+        </p></div></div>
+      </details>
+      <details>
+        <summary>Is there a free tier?</summary>
+        <div class="faq__a"><div><p>
+          Not in the published model. The plan prices four subscription tiers plus usage. Whether a
+          free tier makes sense is exactly the kind of thing Months 4&ndash;6 of the pilot is for.
+        </p></div></div>
+      </details>
+      <details>
+        <summary>What will the pilot cost?</summary>
+        <div class="faq__a"><div><p>
+          Pilot terms have not been set. The plan's Months 4&ndash;6 objective is to demonstrate
+          that the system reduces measurable administrative workload — which means the pilot's job
+          is producing evidence, not revenue. Ask the founder directly.
+        </p></div></div>
+      </details>
+      <details>
+        <summary>How do I know usage charges will not run away?</summary>
+        <div class="faq__a"><div><p>
+          You do not yet, and nobody does. The plan's stated mitigations for infrastructure cost
+          (Section 28.5) are usage-based pricing, model routing, efficient prompts, caching, usage
+          monitoring and infrastructure optimization. What a customer needs on top of that is a
+          visible usage meter and a cap, and that is a fair thing to require before signing
+          anything.
+        </p></div></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="help">
+  <div class="shell help__inner">
+    <div class="help__copy">
+      <h2>Talk about what your operation actually costs</h2>
+      <p>Fleet size, who dispatches, and what the paperwork takes. That is enough to say whether this is worth your time.</p>
+      <div class="help__cta">
+        <a class="btn btn--ghost" href="/demo#pilot">Join the pilot</a>
+        <a class="btn btn--ghost" href="/demo" data-agent>Ask the copilot</a>
+      </div>
+    </div>
+    <div class="help__media">
+      <div class="help__stage">
+        <img src="/static/images/support.jpg" alt="A dispatch operations desk with route monitors" width="1000" height="700" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}
