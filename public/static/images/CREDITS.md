@@ -1,6 +1,11 @@
 # Photography credits
 
-All photographs are from Unsplash under the Unsplash License (free to use
+`founder.jpg` and `founder-avatar.jpg` are the founder's own portrait, supplied
+by her — not stock. `founder-avatar.jpg` is a head-and-shoulders crop of the
+same frame, because `object-fit: cover` on the full portrait renders the whole
+figure into a 56px circle and the face disappears.
+
+Every other photograph is from Unsplash under the Unsplash License (free to use
 commercially, no attribution required — credited here anyway).
 
 **Only free-license photos are used.** Unsplash+ / "premium_photo-" assets ship

@@ -77,9 +77,12 @@ AUDIO_DIR = os.getenv(
 
 # Company details injected into every template.
 #
-# CONTACT DETAILS ARE PLACEHOLDERS. Replace email/LinkedIn below (and nothing
-# else) when the real ones exist — every page reads them from here, so one edit
-# updates the whole site.
+# The social links are the founder's real accounts. Share URLs arrive carrying
+# tracking parameters (mibextid, stkn, utm_*) that identify the person who sent
+# them; those are stripped here rather than published on every page.
+#
+# THE EMAIL IS STILL A PLACEHOLDER. Replace it below when a real mailbox exists
+# — every page reads from here, so one edit updates the whole site.
 #
 # Everything factual here comes from the five-year business plan. The plan is
 # explicit (Appendix B, items 1–4) that no U.S. entity has been formed and no
@@ -93,8 +96,16 @@ COMPANY = {
     "status": "Pre-formation — U.S. entity not yet filed (Appendix B)",
     "market": "United States",
     "email": env("CONTACT_EMAIL", "hello@dispatchiq.com"),
-    "phone": env("CONTACT_PHONE", "(555) 018-4420"),
-    "linkedin": env("CONTACT_LINKEDIN", "https://www.linkedin.com/in/mukhlisa-latifova"),
+    "linkedin": env(
+        "CONTACT_LINKEDIN",
+        "https://www.linkedin.com/in/mukhlisa-latifova-53421143b",
+    ),
+    "instagram": env("CONTACT_INSTAGRAM", "https://www.instagram.com/dispatchwithlisa"),
+    "instagram_handle": "@dispatchwithlisa",
+    "facebook": env(
+        "CONTACT_FACEBOOK",
+        "https://www.facebook.com/profile.php?id=61594856372735",
+    ),
     # Section 18 — illustrative pricing. The plan calls these planning
     # assumptions to be validated by market testing, and the pricing page says
     # so on the page rather than only here.
@@ -114,6 +125,8 @@ FOUNDER = {
     "name": "Mukhlisa Latifova",
     "role": "Founder & Chief Executive Officer",
     "home": "New York, New York",
+    "photo": "/static/images/founder.jpg",
+    "avatar": "/static/images/founder-avatar.jpg",
     "credentials": [
         "Author of The Cross-Continental Dispatcher (2026), a professional reference on "
         "U.S. and EU truck dispatch compliance — ELD rules, hours-of-service, the EU "

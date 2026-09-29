@@ -1158,6 +1158,64 @@ button, input, select, textarea { font: inherit; color: inherit; }
 }
 .founder__card h3 { font-size: 20px; }
 .founder__card .mono { color: var(--green); margin-top: 6px; display: block; }
+
+/* The portrait is shot 0.72 wide-to-tall against a near-white backdrop. A
+   square frame holds both the face and the crossed arms, trims the empty
+   floor, and keeps the card close in height to the credentials list beside
+   it — at 4:5 the card ran some 400px past the end of that list. */
+.founder__photo {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  object-position: center 10%;
+  border-radius: 8px;
+  background: var(--green-wash);
+  margin-bottom: 20px;
+}
+
+.founder__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+.founder__links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 13px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: var(--ink-soft);
+  transition: border-color .18s var(--ease), color .18s var(--ease),
+              background .18s var(--ease);
+}
+.founder__links a:hover {
+  border-color: var(--green);
+  color: var(--green-deep);
+  background: var(--green-pale);
+}
+.founder__links svg { width: 14px; height: 14px; flex: none; }
+
+/* The founder beside the pilot note on /demo, so "talk to a person" has a
+   face attached to it rather than only a name. */
+.whois {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.whois img {
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  object-fit: cover;
+  background: var(--green-wash);
+  flex: none;
+}
+.whois b { display: block; font-size: 14px; color: var(--ink); }
+.whois span { font-size: 12.5px; color: var(--muted); }
 .founder ul { list-style: none; padding: 0; margin: 0; }
 .founder ul li {
   position: relative;
